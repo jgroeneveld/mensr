@@ -1,0 +1,45 @@
+!!!
+%html
+  %head
+    %title mensr
+    %link{href: "/favicon.ico", rel: "shortcut icon"}/
+    = stylesheet_link_tag :all
+    = javascript_include_tag :defaults, 'ratings', 'mouse_over_dish', 'mouse_over_image', 'facebox'
+    /[if IE]
+      \= javascript_include_tag "application_ie"
+    = csrf_meta_tag
+  %body{onload: raw(show_flashes)}
+    .navigation
+      .primary
+        .logo
+          = link_to (image_tag "logo.png"), :root
+        .menu
+          - if current_user
+            %span.element
+              Hallo #{"Meister " if current_user.is_admin?}#{link_to current_user.name, current_user}
+            %span.element= link_to "» Abmelden", logout_path
+            = link_to image_tag('settings.png'), customize_menue_path
+          - else
+            %span.element= link_to "» Anmelden", login_path
+          %span.element= link_to image_tag('help.png'), about_path
+      .secondary
+        .menu
+          %span.element= link_to "» Tagesmenü", today_path
+          %span.element= link_to "» Wochenmenü", week_path
+      - if !@tertiary_navi_links.blank?
+        .secondary
+          .menu
+            - for link in @tertiary_navi_links
+              %span.element
+                %span{style: "font-weight: bold; color: #{link[:bullet_color]}"} •
+                - if link[:active]
+                  = link_to link[:name], link[:url]
+                - else
+                  = link[:name]
+    .container
+      #no_js_flashes
+        - flash.each do |key, value|
+          %div{class: key}
+            = value
+      = yield
+    #flashes
