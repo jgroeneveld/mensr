@@ -1,0 +1,15 @@
+= link_to "Zurück", :back, class: "nav_button"
+.content
+  %h1 Anmelden
+  = form_tag sessions_path do
+    %p
+      = label_tag :login, "E-Mail Adresse"
+      %br/
+      = text_field_tag :login, params[:login]
+    %p
+      = label_tag :password
+      %br/
+      = password_field_tag :password
+    %p
+      = submit_tag "Anmelden"
+      = link_to "Registrieren", signup_path
