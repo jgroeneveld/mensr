@@ -20,4 +20,12 @@ class Mensa < ActiveRecord::Base
   def dishes_for_date the_date
     dishes.where(serve_date: the_date)
   end
+
+  def dishes_between_dates date1, date2
+    dishes.where('serve_date >= ? AND serve_date <= ?', date1, date2)
+  end
+
+  def dishes_in_week mon_date
+    dishes_between_dates(mon_date, mon_date+4.days)
+  end
 end

@@ -3,12 +3,10 @@
     %tr
       %td{colspan: 6, class: "table_controls"}
         .backward
-          = link_to image_tag("week_backward.png"), week_path(mensa_id: @mensa.id, mon_date: (@mon_date - 7.days))
-          = link_to image_tag("day_backward.png"), week_path(mensa_id: @mensa.id, mon_date: (@mon_date - 1.days))
+          = print_week_menue_previous_week_control @mensa, @mon_date
 
         .forward
-          = link_to image_tag("day_forward.png"), week_path(mensa_id: @mensa.id, mon_date: (@mon_date + 1.days))
-          = link_to image_tag("week_forward.png"), week_path(mensa_id: @mensa.id, mon_date: (@mon_date + 7.days))
+          = print_week_menue_next_week_control @mensa, @mon_date
 
     %tr
       %th

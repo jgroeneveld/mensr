@@ -2,7 +2,9 @@
   = link_to "Fertig", day_menue_path(date: @date), class: "nav_button", style: 'float: right;'
 - elsif current_user
   = link_to "Anpassen", day_menue_path(date: @date, customize: true), class: "nav_button", style: 'float: right;'
+
 %div{:style => "clear: both"}
+
 .day_menue
   .controls
     .date
@@ -12,6 +14,7 @@
     .forward
       = link_to (image_tag "day_forward.png"), day_menue_path(date: (@date + 1.day))
     %div{:style => "clear:both"}
+
   #sortdishes
     - if !@dishes.blank?
       - for dish in @dishes
@@ -28,6 +31,7 @@
               = render partial: 'dishes/dish', locals:{dish: dish}
             - else
               = render partial: 'dishes/not_real_dish', locals:{dish: dish}
+
 - if @customize
   :javascript
     Sortable.create('sortdishes', {
