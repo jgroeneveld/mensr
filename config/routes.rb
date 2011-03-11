@@ -1,5 +1,7 @@
 MensaBewerter::Application.routes.draw do
 
+  match 'page/about', as: 'about'
+
   match 'dishes/rate', as: 'rate_dish'
   match 'facebox/dish_photo' => 'facebox#dish_photo', as: 'facebox_dish_photo'
 

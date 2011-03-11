@@ -20,12 +20,13 @@
 
       <div class='menu'>
         <% if current_user %>
-        <span class="element">Hallo <%= "Meister " if current_user.is_admin? %><%= link_to current_user.name, current_user %></span>
-        <span class="element"><%= link_to "» Abmelden", logout_path %></span>
-        <%= link_to image_tag('settings.png'), customize_menue_path %>
+          <span class="element">Hallo <%= "Meister " if current_user.is_admin? %><%= link_to current_user.name, current_user %></span>
+          <span class="element"><%= link_to "» Abmelden", logout_path %></span>
+          <%= link_to image_tag('settings.png'), customize_menue_path %>
         <% else %>
-        <span class="element"><%= link_to "» Anmelden", login_path %></span>
+          <span class="element"><%= link_to "» Anmelden", login_path %></span>
         <% end %>
+          <span class='element'><%= link_to image_tag('help.png'), about_path %></span>
       </div>
     </div>
 
