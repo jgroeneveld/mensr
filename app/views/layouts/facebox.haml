@@ -1,0 +1,11 @@
+%html
+  %head
+    = stylesheet_link_tag :all
+    = javascript_include_tag :all
+    = csrf_meta_tag
+
+  %body{bgcolor: "#eff6fe"}
+    = yield
+
+    :javascript
+      center_element('facebox');

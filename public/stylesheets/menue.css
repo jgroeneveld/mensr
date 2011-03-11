@@ -1,0 +1,162 @@
+.dish {
+  height: 100%;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.dish_description {
+  font-size: 12px;
+}
+
+a .dish_description {
+  color: #000;
+  text-decoration: none;
+  min-height: 8em;
+}
+
+a .dish_description:hover {
+  background-color: #b3d2ff;
+  color: #000;
+  text-decoration: none;
+}
+
+.dish_tags {
+  margin-top: 5px;
+  float:left;
+}
+
+.dish_tags img {
+  width: 20px;
+  height: 20px;
+}
+
+.dish_prices {
+  margin-top: 5px;
+  float: right;
+}
+
+.dish_price_a {
+  display: inline;
+}
+
+.dish_price_b {
+  display: inline;
+}
+
+.dish_rating {
+  float: right;
+}
+
+.dish .picture_indicator {
+  float: left;
+}
+
+.day_menue {
+  margin: auto;
+
+}
+
+.day_menue .controls{
+  width:100%;
+}
+
+.day_menue .controls .date {
+  width: 100%;
+  text-align: center;
+}
+
+.day_menue .controls .backward{
+  float:left;
+}
+
+.day_menue .controls .forward{
+  float:right;
+}
+
+.day_menue .dish_container {
+  width: 160px;
+  height: 18em;
+  background-color: #eff6fe;
+  border: 1px solid silver;
+  padding: 20px;
+  padding-bottom: 0px;
+  -moz-border-radius:    10px;
+  -webkit-border-radius: 10px;
+  border-radius:         10px;
+
+  margin: 20px;
+  float: left;
+  display: block;
+  text-align: center;
+
+  position: relative;
+}
+
+
+.weekmenue table {
+  width: 100%;
+  font-size: inherit;
+  border-spacing: 0px;
+}
+
+.weekmenue tr {
+
+}
+.first_tr{
+
+}
+
+.second_tr{
+  background-color: #eff6fe;
+}
+
+.weekmenue th {
+  color: #000077;
+  background-color: #b3d2ff;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.weekmenue td {
+  width: 16%;
+  vertical-align:text-top;
+  border-left:solid silver 1px;
+  padding: 5px;
+}
+
+td.last{
+    border-right:solid silver 1px;
+}
+
+
+.weekmenue .date {
+  font-size: 10px;
+  font-weight: normal;
+}
+
+td.table_controls{
+  border:none;
+}
+
+.table_controls .backward{
+  float:left;
+}
+
+.table_controls .current_week {
+  display:inline-block;
+  width:75%;
+  margin:auto;
+  text-align:center
+}
+
+.table_controls .forward{
+  float:right;
+}
+
+.drag_handle {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}

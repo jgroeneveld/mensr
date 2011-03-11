@@ -1,0 +1,57 @@
+= link_to "Zurück", :back, class: "nav_button"
+
+.content.dish_details
+  .dish_details_date.less_important_information
+    = l @dish.serve_date, format: "%A, %d. %B"
+
+  .dish_details_description
+    = @dish.mensa.name
+    = " - " + t(@dish.menue_category.name)
+    %br
+    %br
+    = format_dish_description @dish.description
+
+  - if !@dish.prioritized_photos.blank? || current_user
+    .dish_details_photos
+      - if !@dish.prioritized_photos.blank?
+        - first = true
+        - @dish.prioritized_photos.each do |photo|
+          .dish_details_photo
+            = link_to_dish_photo photo, first
+          - first = false
+        %div{style: "clear: both"}
+
+      = link_to "Foto hochladen", new_dish_photo_path(dish_id: @dish.id) if current_user
+
+
+  .dish_details_rating
+    .less_important_information Tageswertung
+    = render partial: "ratings/stars", locals: {identifier: @dish.id, rating: @dish.average_rating, rating_count: @dish.ratings.count, for_detail_view: true}
+
+  .dish_details_rating.set_rating
+    .less_important_information Gesamtwertung
+    = render partial: "ratings/stars_for_set", locals: {identifier: @dish.dish_set.id, rating: @dish.dish_set.average_rating, rating_count: @dish.dish_set.ratings_count}
+
+  .dish_details_prices.less_important_information
+    .dish_price_a A: #{number_to_currency @dish.price_a}
+    .dish_price_b B: #{number_to_currency @dish.price_b}
+
+  .dish_details_tags
+    - if !@dish.tags.blank?
+      - for tag in @dish.tags
+        = image_for_tag tag
+
+  %div{:style => "clear: both"}
+
+- if !@dish_history.blank?
+
+  .dish_history_container
+    .title Letzte Vorkommnisse
+    .dish_history
+      - for d in @dish_history
+        .entry{class: cycle("first","second")}
+          %a{href: dish_path(d)}
+            .description= d.description
+          .rating= render partial: "ratings/stars", locals: {identifier: d.id, rating: d.average_rating, rating_count: d.ratings.count, for_detail_view: true}
+          .date.less_important_information= l d.serve_date
+          %div{:style => "clear: both"}

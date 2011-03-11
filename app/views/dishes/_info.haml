@@ -1,0 +1,20 @@
+-# locals: dish
+
+.dish_prices.less_important_information
+  - if show_price_a?
+    .dish_price_a
+      A:
+      = number_to_currency dish.price_a
+
+  - if show_price_b?
+    .dish_price_b
+      B:
+      = number_to_currency dish.price_b
+
+- if show_tags?
+  .dish_tags
+    - if !dish.tags.blank?
+      - for tag in dish.tags
+        = image_for_tag tag
+
+%div{style: 'clear: both'}

@@ -1,0 +1,38 @@
+
+Content: <br>
+
+<h2>Essen 1</h2>
+<% if !@dishes[:essen_1].blank? %>
+  <% for dish in @dishes[:essen_1] %>
+    <%= render partial: 'dishes/dish', locals: {dish: dish} %>
+  <% end %>  
+<% end %>
+
+
+<h2>Essen 2</h2>
+<% if !@dishes[:essen_2].blank? %>
+  <% for dish in @dishes[:essen_2] %>
+    <%= render partial: 'dishes/dish', locals: {dish: dish} %>
+  <% end %>  
+<% end %>
+
+<h2>Wok und Pfanne</h2>
+<% if !@dishes[:wok_und_pfanne].blank? %>
+  <% for dish in @dishes[:wok_und_pfanne] %>
+    <%= render partial: 'dishes/dish', locals: {dish: dish} %>
+  <% end %>  
+<% end %>
+
+<h2>Vegetarisch</h2>
+<% if !@dishes[:vegetarisch].blank? %>
+  <% for dish in @dishes[:vegetarisch] %>
+    <%= render partial: 'dishes/dish', locals: {dish: dish} %>
+  <% end %>  
+<% end %>
+
+<h2>Aufläufe und Gratin</h2>
+<% if !@dishes[:auflaeufe_und_gratin].blank? %>
+  <% for dish in @dishes[:auflaeufe_und_gratin] %>
+    <%= render partial: 'dishes/dish', locals: {dish: dish} %>
+  <% end %>  
+<% end %>

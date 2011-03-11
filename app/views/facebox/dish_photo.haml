@@ -1,0 +1,5 @@
+.dish_photo_facebox
+  = image_tag @photo.picture.url(:large)
+  .less_important_information
+    Bild vom
+    = l @photo.created_at.to_date

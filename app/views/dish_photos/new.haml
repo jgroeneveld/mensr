@@ -1,0 +1,25 @@
+= link_to "Zurück", :back, class: "nav_button"
+
+.content
+  %h1 Foto hochladen
+
+  = raw ("Für <em>" + h(@photo.dish.description) + "</em> vom " + l(@photo.dish.serve_date))
+  %br
+  %br
+
+  = form_for @photo, html: {multipart: true} do |f|
+
+    - if @photo.errors.any?
+      #error_explanation
+        %h2 Foto konnte nicht gespeichert werden
+        %ul
+          %li Die Datei muss ein Bild sein
+          %li Die Datei darf nicht zu groß sein
+
+    .field
+      = f.file_field :picture
+
+    = f.hidden_field(:dish_id, {value: @photo.dish_id})
+
+    .actions
+      = f.submit

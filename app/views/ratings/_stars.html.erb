@@ -1,0 +1,26 @@
+<% # locals identifier, rating, rating_count  %>
+<% rating_count ||= nil %>
+<% for_detail_view ||= false %>
+
+<div class='rating' id='rating_for_<%= identifier %>'>
+
+  <div class='rating_stars' onmouseout="update_rating_stars(<%= "#{identifier}, #{rating-1}" %>)">
+    <% j = rating %>
+    <% (5).times do |i| %>
+
+        <div class='rating_star' onmouseover="update_rating_stars(<%= "#{identifier}, #{i}" %>)">
+          <% if j > 0 %>
+            <%= print_star_for_dish identifier, i, filled: true, for_detail_view: for_detail_view %>
+          <% else %>
+            <%= print_star_for_dish identifier, i, filled: false, for_detail_view: for_detail_view %>
+          <% end %>
+        </div>
+
+      <% j -= 1 %>
+    <% end %>
+  </div>
+
+  <%= raw("<div class='rating_count less_important_information'>(#{rating_count})</div>") if rating_count %>
+
+  <div style="clear: both"></div>
+</div>

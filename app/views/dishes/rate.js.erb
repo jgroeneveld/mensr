@@ -1,0 +1,21 @@
+<% if @for_detail_view %>
+  $("rating_for_<%= @dish.id %>").update('<%= escape_javascript(
+  render partial: "ratings/stars", locals: {identifier: @dish.id, rating: @dish.average_rating, rating_count: @dish.ratings.count, for_detail_view: @for_detail_view}
+) %>');
+<% else %>
+  $("dish_cell_<%= @dish.id %>").update('<%= escape_javascript(
+    render partial: 'dishes/dish', locals: {dish: @dish}
+  )%>');
+<% end %>
+
+Effect.Pulsate('rating_for_<%= @dish.id %>', { pulses: 1, duration: 0.25 });
+
+var set_ratings = $$("#set_rating_for_<%= @dish.dish_set.id %>");
+
+for (var i = 0; i < set_ratings.length; i++) {
+  set_ratings[i].update('<%= escape_javascript(
+  render partial: "ratings/stars_for_set", locals: {identifier: @dish.dish_set.id, rating: @dish.dish_set.average_rating, rating_count: @dish.dish_set.ratings_count}
+) %>');
+};
+
+<%=raw show_flashes %>

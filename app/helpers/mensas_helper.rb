@@ -1,0 +1,2 @@
+module MensasHelper
+end

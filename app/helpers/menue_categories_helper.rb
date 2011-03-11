@@ -1,0 +1,2 @@
+module MenueCategoriesHelper
+end

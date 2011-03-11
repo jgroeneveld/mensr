@@ -1,0 +1,16 @@
+<%= link_to "Zurück", :back, class: "nav_button" %>
+
+<div class='content'>
+  <p>
+    <b>Name:</b>
+    <%= @user.name %>
+  </p>
+
+  <p>
+    <b>Email:</b>
+    <%= @user.email %>
+  </p>
+
+
+  <%= link_to 'Profil bearbeiten', edit_user_path(@user) %>
+</div>

@@ -1,0 +1,125 @@
+.dish_details {
+
+}
+
+.dish_details_date {
+  float: right;
+}
+
+.dish_details_description {
+  clear: both;
+  width: 300px;
+  margin: auto;
+  text-align: center;
+  padding-top: 25px;
+  margin-bottom: 20px;
+
+  font-size: 16px;
+  font-family: Georgia;
+}
+
+.dish_details_photos {
+  width: 200px;
+  margin: auto;
+  margin-bottom: 20px;
+  text-align: center;
+  padding: 10px;
+  background-color: white;
+  border: 1px solid silver;
+}
+
+.dish_details_photo {
+  float: left;
+}
+
+.dish_details_prices {
+  float: right;
+}
+
+.dish_details_tags {
+
+}
+
+.dish_details_tags img {
+  width: 25px;
+  height: 25px;
+}
+
+.dish_details_rating.set_rating {
+  margin-bottom: 40px;
+}
+
+.dish_details_rating {
+  margin: auto;
+  width: 150px;
+  margin-bottom: 10px;
+}
+
+.dish_details_rating .rating_star {
+  float: left;
+  margin: 0px;
+  width: 25px;
+  height: 25px;
+}
+
+.dish_details_rating .rating_star img {
+  width: 25px;
+  height: 25px;
+}
+
+.dish_history_container {
+  clear: both;
+  width: 540px;
+  margin: auto;
+  margin-top: 30px;
+}
+
+.dish_history_container .title {
+  color: gray;
+}
+
+.dish_history {
+  border: solid 1px silver;
+}
+
+.dish_history .entry {
+  margin-bottom: 5px;
+  padding: 5px;
+  font-size: 12px;
+  padding-left:20px;
+  padding-right:20px;
+
+}
+
+.dish_history .first {
+}
+
+.dish_history .second {
+  background-color: #eff6fe;
+}
+
+.dish_history .entry .description {
+  float: left;
+  width: 350px;
+}
+
+.dish_history .entry .date {
+  float: right;
+}
+
+.dish_history .entry .rating {
+  float: right;
+  margin-left: 5px;
+}
+a .description {
+  color: #000;
+  text-decoration: none;
+
+}
+
+a .description:hover {
+  background-color: #b3d2ff;
+  color: #000;
+  text-decoration: none;
+}
+

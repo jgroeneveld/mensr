@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @mensa.name %>
+</p>
+
+<p>
+  <b>Hours:</b>
+  <%= @mensa.hours %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @mensa.location %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%= @mensa.url %>
+</p>
+
+
+<%= link_to 'Edit', edit_mensa_path(@mensa) %> |
+<%= link_to 'Back', mensas_path %>

@@ -1,0 +1,25 @@
+<% # locals identifier, rating, rating_count  %>
+<% rating_count ||= nil %>
+
+<div class='rating' id='set_rating_for_<%= identifier %>'>
+
+  <div class='rating_stars'>
+    <% j = rating %>
+    <% (5).times do |i| %>
+
+        <div class='rating_star'>
+          <% if j > 0 %>
+            <%= print_star_for_set identifier, i, filled: true %>
+          <% else %>
+            <%= print_star_for_set identifier, i, filled: false %>
+          <% end %>
+        </div>
+
+      <% j -= 1 %>
+    <% end %>
+  </div>
+
+  <%= raw("<div class='rating_count less_important_information'>(#{rating_count})</div>") if rating_count %>
+
+  <div style="clear: both"></div>
+</div>

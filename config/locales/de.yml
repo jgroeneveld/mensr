@@ -1,0 +1,250 @@
+de:
+
+  admin_only: "Das dürfen nur Administratoren!"
+  fetch_complete: "Die aktuellen Mensadaten wurden eingelesen."
+  rate_success: "Vielen Dank für die Bewertung."
+  rate_failure: "Maximale Anzahl Gerichte für den %{date} bewertet."
+
+  number:
+    currency:
+          format:
+            # Where is the currency sign? %u is the currency unit, %n the number (default: $5.00)
+            format: "%n%u"
+            unit: "€"
+            # These five are to override number.format and are optional
+            separator: ","
+            delimiter: "."
+            precision: 2
+            significant: false
+            strip_insignificant_zeros: false
+
+  date:
+    formats:
+      # Use the strftime parameters for formats.
+      # When no format has been given, it uses default.
+      # You can provide other formats here if you like!
+      default: "%d.%m.%Y"
+      short: "%d %b"
+      long: "%d. %B %Y"
+
+    day_names: [Sonntag, Montag, Dienstag, Mittwoch, Donnerstag, Freitag, Sonnabend]
+    abbr_day_names: [Sun, Mon, Tue, Wed, Thu, Fri, Sat]
+
+    # Don't forget the nil at the beginning; there's no such thing as a 0th month
+    month_names: [~, Januar, Februar, März, April, Mai, Juni, Juli, August, September, Oktober, November, Dezember]
+    abbr_month_names: [~, Jan, Feb, Mär, Apr, Mai, Jun, Jul, Aug, Sep, Okt, Nov, Dez]
+    # Used in date_select and datetime_select.
+    order:
+      - :day
+      - :month
+      - :year
+
+  time:
+    formats:
+      default: "%a, %d %b %Y %H:%M:%S %z"
+      short: "%d %b %H:%M"
+      long: "%B %d, %Y %H:%M"
+    am: "am"
+    pm: "pm"
+
+
+  datetime:
+    distance_in_words:
+      half_a_minute: 'eine halbe Minute'
+      less_than_x_seconds:
+        one: 'weniger als eine Sekunde'
+        other: 'weniger als %{count} Sekunden'
+      x_seconds:
+        one: 'eine Sekunde'
+        other: '%{count} Sekunden'
+      less_than_x_minutes:
+        one: 'weniger als eine Minute'
+        other: 'weniger als %{count} Minuten'
+      x_minutes:
+        one: 'eine Minute'
+        other: '%{count} Minuten'
+      about_x_hours:
+        one: 'etwa eine Stunde'
+        other: 'etwa %{count} Stunden'
+      x_days:
+        one: 'ein Tag'
+        other: '%{count} Tage'
+      about_x_months:
+        one: 'etwa ein Monat'
+        other: 'etwa %{count} Monate'
+      x_months:
+        one: 'ein Monat'
+        other: '%{count} Monate'
+      almost_x_years:
+        one: 'fast ein Jahr'
+        other: 'fast %{count} Jahre'
+      about_x_years:
+        one: 'etwa ein Jahr'
+        other: 'etwa %{count} Jahre'
+      over_x_years:
+        one: 'mehr als ein Jahr'
+        other: 'mehr als %{count} Jahre'
+    prompts:
+      second: "Sekunden"
+      minute: "Minuten"
+      hour: "Stunden"
+      day: "Tag"
+      month: "Monat"
+      year: "Jahr"
+
+  number:
+    format:
+      precision: 2
+      separator: ','
+      delimiter: '.'
+      significant: false
+      strip_insignificant_zeros: false
+    currency:
+      format:
+        unit: '€'
+        format: '%n%u'
+        separator: ","
+        delimiter: ""
+        precision: 2
+        significant: false
+        strip_insignificant_zeros: false
+    percentage:
+      format:
+        delimiter: ""
+    precision:
+      format:
+        delimiter: ""
+    human:
+      format:
+        delimiter: ""
+        precision: 1
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        # Storage units output formatting.
+        # %u is the storage unit, %n is the number (default: 2 MB)
+        format: "%n %u"
+        units:
+          byte:
+            one:   "Byte"
+            other: "Bytes"
+          kb: "KB"
+          mb: "MB"
+          gb: "GB"
+          tb: "TB"
+      decimal_units:
+        format: "%n %u"
+        units:
+          unit: ""
+          thousand: Tausend
+          million: Millionen
+          billion:
+            one: Milliarde
+            others: Milliarden
+          trillion: Billionen
+          quadrillion:
+            one: Billiarde
+            others: Billiarden
+
+  support:
+    array:
+      words_connector: ", "
+      two_words_connector: " und "
+      last_word_connector: " und "
+    select:
+      prompt: "Bitte wählen:"
+
+  activemodel:
+    errors:
+      template:
+        header:
+          one:    "Konnte %{model} nicht speichern: ein Fehler."
+          other:  "Konnte %{model} nicht speichern: %{count} Fehler."
+        body: "Bitte überprüfen Sie die folgenden Felder:"
+  helpers:
+    select:
+      prompt: "Bitte wählen"
+
+    submit:
+      create: '%{model} erstellen'
+      update: '%{model} aktualisieren'
+      submit: '%{model} speichern'
+
+  errors:
+    format: "%{attribute} %{message}"
+
+    messages: &errors_messages
+      inclusion: "ist kein gültiger Wert"
+      exclusion: "ist nicht verfügbar"
+      invalid: "ist nicht gültig"
+      confirmation: "stimmt nicht mit der Bestätigung überein"
+      accepted: "muss akzeptiert werden"
+      empty: "muss ausgefüllt werden"
+      blank: "muss ausgefüllt werden"
+      too_long: "ist zu lang (nicht mehr als %{count} Zeichen)"
+      too_short: "ist zu kurz (nicht weniger als %{count} Zeichen)"
+      wrong_length: "hat die falsche Länge (muss genau %{count} Zeichen haben)"
+      not_a_number: "ist keine Zahl"
+      greater_than: "muss größer als %{count} sein"
+      greater_than_or_equal_to: "muss größer oder gleich %{count} sein"
+      equal_to: "muss genau %{count} sein"
+      less_than: "muss kleiner als %{count} sein"
+      less_than_or_equal_to: "muss kleiner oder gleich %{count} sein"
+      odd: "muss ungerade sein"
+      even: "muss gerade sein"
+      not_an_integer: "muss ganzzahlig sein"
+
+  activerecord:
+    errors:
+      template:
+        header:
+          one:    "Konnte %{model} nicht speichern: ein Fehler."
+          other:  "Konnte %{model} nicht speichern: %{count} Fehler."
+        body: "Bitte überprüfen Sie die folgenden Felder:"
+
+      messages:
+        taken: "ist bereits vergeben"
+        record_invalid: "Gültigkeitsprüfung ist fehlgeschlagen: %{errors}"
+        <<: *errors_messages
+
+      full_messages:
+        format: "%{attribute}%{message}"
+
+
+  helpers:
+    label:
+      layout_option:
+        show_tags:    "Symbole anzeigen"
+        show_price_a: "Preis A (Studenten) anzeigen"
+        show_price_b: "Preis B (Mitarbeiter) anzeigen"
+        show_rating:  "Bewertung anzeigen"
+        like_words:   "Mag ich"
+        dislike_words: "Mag ich nicht"
+
+    submit:
+      layout_option:
+        update: "Speichern"
+      dish_photo:
+        create: "Hochladen"
+
+  # categories
+  essen_1: "Essen 1"
+  essen_2: "Essen 2"
+  wok_und_pfanne: "Wok und Pfanne"
+  vegetarisch: "Vegetarisch"
+  auflaeufe_und_gratin: "Aufläufe und Gratin"
+  pizza: "Pizza"
+  pasta: "Pasta"
+  suppe: "Suppe"
+  front_cooking: "Front-Cooking"
+  bio_menue: "Bio-Menü"
+
+  # tags
+  pig: "Enthält Schweinefleisch"
+  chicken: "Enthält Geflügel"
+  cow: "Enthält Rindfleisch"
+  fish: "Enthält Fisch"
+  vegan: "Vegan"
+  vegetarian: "Vegetarisch"
+  bio: "Bio"
+  lamb: "Enthält Lammfleisch"

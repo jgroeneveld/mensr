@@ -1,0 +1,58 @@
+body, p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size:   13px;
+  line-height: 18px;
+}
+
+img {
+  border: 0px;
+}
+
+a { color: #00C; text-decoration: none; }
+a:hover { color: #88C; }
+
+a.nav_button {
+  color: 000077;
+  padding: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border: solid 1px silver;
+  background-color: #eff6fe;
+}
+
+a:hover.nav_button {
+  color: #000;
+  background-color: #b3d2ff;
+}
+
+.less_important_information {
+  color: gray;
+  font-size: 10px;
+}
+
+label {
+  min-width: 16em;
+  display: inline-block;
+}
+
+fieldset{
+  margin-bottom:20px;
+  border:solid 1px silver;
+}
+
+legend{
+  color:gray;
+}
+
+.like_word{
+  background-color:#f0feef;
+  border:solid 1px #aeda9b;
+  padding-left:3px;
+  padding-right:3px;
+}
+.dislike_word{
+  background-color:#feefef;
+  border:solid 1px #cd8888;
+  padding-left:3px;
+  padding-right:3px;
+}

@@ -1,0 +1,52 @@
+<%= form_for(@layout_option) do |f| %>
+  <% if @layout_option.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@layout_option.errors.count, "error") %> prohibited this layout_option from being saved:</h2>
+
+      <ul>
+      <% @layout_option.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <fieldset>
+    <legend>Sichtbarkeit</legend>
+    <div class="field">
+      <%= f.label :show_tags %>
+      <%= f.check_box :show_tags %>
+    </div>
+    <div class="field">
+      <%= f.label :show_price_a %>
+      <%= f.check_box :show_price_a %>
+    </div>
+    <div class="field">
+      <%= f.label :show_price_b %>
+      <%= f.check_box :show_price_b %>
+    </div>
+    <div class="field">
+      <%= f.label :show_rating %>
+      <%= f.check_box :show_rating %>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Hervorhebungen</legend>
+    <div class = "field">
+      <%= f.label :like_words %>
+      <%= f.text_field :like_words %>
+      <span class="like_word">Steak</span>
+    </div>
+    <div class = "field">
+      <%= f.label :dislike_words %>
+      <%= f.text_field :dislike_words %>
+      <span class="dislike_word">Kapern</span>
+    </div>
+    <span class='less_important_information'>Worte durch Kommas getrennt eingeben</span>
+  </fieldset>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

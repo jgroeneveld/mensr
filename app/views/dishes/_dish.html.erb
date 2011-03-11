@@ -1,0 +1,34 @@
+<% # locals: dish %>
+
+<div class='dish' id='dish_<%= dish.id %>'>
+  <%= link_to (render partial: 'dishes/head', locals: {dish: dish}), dish %>
+  <%= render partial: 'dishes/info', locals: {dish: dish} %>
+
+  <% if show_rating? %>
+    <div class='dish_rating' id='stars_for_dish_<%= dish.id %>'>
+      <%= render partial: "ratings/stars", locals: {identifier: dish.id, rating: dish.average_rating, rating_count: dish.ratings.count} %>
+    </div>
+
+    <div style="clear: both"></div>
+
+    <% if !dish.prioritized_photos.blank? %>
+      <div class='picture_indicator'>
+        <%= image_tag "picture_indicator.png", title: "Foto" %>
+      </div>
+    <% end %>
+
+    <div class='dish_rating' id='stars_for_set_d_<%= dish.id %>'>
+      <%= render partial: "ratings/stars_for_set", locals: {identifier: dish.dish_set.id, rating: dish.dish_set.average_rating, rating_count: dish.dish_set.ratings_count} %>
+    </div>
+  <% end %>
+
+  <div style="clear: both"></div>
+</div>
+
+<script type="text/javascript">
+  doMouseOverDishPost({
+    id: <%= dish.id %>,
+    showStarsForDish: <%= dish.average_rating > 0 %>,
+    showStarsForSet: <%= dish.dish_set.average_rating > 0 %>
+  });
+</script>

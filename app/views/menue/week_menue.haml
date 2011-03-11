@@ -1,0 +1,36 @@
+.weekmenue
+  %table
+    %tr
+      %td{colspan: 6, class: "table_controls"}
+        .backward
+          = link_to image_tag("week_backward.png"), week_path(mensa_id: @mensa.id, mon_date: (@mon_date - 7.days))
+          = link_to image_tag("day_backward.png"), week_path(mensa_id: @mensa.id, mon_date: (@mon_date - 1.days))
+
+        .forward
+          = link_to image_tag("day_forward.png"), week_path(mensa_id: @mensa.id, mon_date: (@mon_date + 1.days))
+          = link_to image_tag("week_forward.png"), week_path(mensa_id: @mensa.id, mon_date: (@mon_date + 7.days))
+
+    %tr
+      %th
+      - (0..4).each do |d|
+        - date = @mon_date + d.days
+        %th
+          = l date, format: '%A'
+          %br
+          %span.date= l date
+
+    - if !@mensa.menue_categories.blank?
+      - for cat in @mensa.menue_categories
+        %tr{class: cycle("first_tr","second_tr")}
+          %td= t cat.name.to_s
+
+          - (0..4).each do |d|
+            %td{id: ("last" if d == 4)}
+
+              - if !@menue[cat.name][d].blank?
+                - for dish in @menue[cat.name][d]
+                  %div{id: "dish_cell_#{dish.id}"}
+                    - if dish.not_real_dish?
+                      = render partial: "dishes/not_real_dish", locals: {dish: dish}
+                    - else
+                      = render partial: "dishes/dish", locals: {dish: dish}
