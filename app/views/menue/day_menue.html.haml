@@ -1,0 +1,47 @@
+- if @customize
+  = link_to "Fertig", day_menue_path(date: @date), class: "nav_button", style: 'float: right;'
+- elsif current_user
+  = link_to "Anpassen", day_menue_path(date: @date, customize: true), class: "nav_button", style: 'float: right;'
+%div{:style => "clear: both"}
+.day_menue
+  .controls
+    .date
+      = @date == Time.now.to_date ? "Heute" : (l @date, format: "%A, %d. %B")
+    .backward
+      = link_to (image_tag "day_backward.png"), day_menue_path(date: (@date - 1.day))
+    .forward
+      = link_to (image_tag "day_forward.png"), day_menue_path(date: (@date + 1.day))
+    %div{:style => "clear:both"}
+  #sortdishes
+    - if !@dishes.blank?
+      - for dish in @dishes
+        .dish_container{id: "sortdishes_#{dish.menue_category.id}", style: "background-color: #{bg_color_for_mensa_id(dish.mensa_id)}"}
+          - if @customize
+            .drag_handle= image_tag 'drag_handle.png'
+          = dish.mensa.name
+          %br/
+          %b= t dish.menue_category.name
+          %br/
+          %br/
+          %div{id: "dish_cell_#{dish.id}"}
+            - if !dish.not_real_dish?
+              = render partial: 'dishes/dish', locals:{dish: dish}
+            - else
+              = render partial: 'dishes/not_real_dish', locals:{dish: dish}
+- if @customize
+  :javascript
+    Sortable.create('sortdishes', {
+      tag: 'div',
+      overlap: 'horizontal',
+      constraint: '',
+      handle: 'drag_handle',
+      scroll: window,
+      onUpdate: function() {
+        var seq = Sortable.serialize("sortdishes");
+
+        new Ajax.Request('#{escape_javascript sort_categories_url}', {
+              method: "post",
+              parameters: { data: seq }
+        });
+      }
+    });
