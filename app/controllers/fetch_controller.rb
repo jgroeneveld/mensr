@@ -76,8 +76,8 @@ class FetchController < ApplicationController
 
     (start_col..5).each do |j|
       if row[j]
-        price_a = process_price_td price_row[1]
-        price_b = process_price_td price_row[3]
+        price_a = process_price_td price_row[1+((j-1)*4)]
+        price_b = process_price_td price_row[3+((j-1)*4)]
 
         dish = process_dish_td row[j]
         dish.serve_date = @mon_date + (j-start_col).days
@@ -105,7 +105,7 @@ class FetchController < ApplicationController
 
   def process_price_td td
     cleaned = Sanitize.clean(td.inner_html)
-    cleaned[","] and cleaned[","] = "."
+    cleaned.gsub!(',','.')
 
     cleaned[/\d+.\d+/].to_f #workaround wegen komischen zeichen im string
   end
