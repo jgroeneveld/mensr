@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110305173938
+# Schema version: 20110313125216
 #
 # Table name: dish_photos
 #
@@ -11,11 +11,12 @@
 #  picture_updated_at   :datetime
 #  created_at           :datetime
 #  updated_at           :datetime
+#  user_id              :integer
 #
 
 class DishPhoto < ActiveRecord::Base
   belongs_to :dish
-
+  belongs_to :uploader, class_name: 'User'
   has_attached_file :picture, styles: {
     large: "640x480>",
     middle: "200x150>",

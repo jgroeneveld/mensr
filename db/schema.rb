@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110310205218) do
+ActiveRecord::Schema.define(:version => 20110313125216) do
 
   create_table "category_parse_datas", :force => true do |t|
     t.integer  "row"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(:version => 20110310205218) do
     t.datetime "picture_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "uploader_id"
   end
 
   create_table "dish_sets", :force => true do |t|

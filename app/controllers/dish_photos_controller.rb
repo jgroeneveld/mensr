@@ -15,6 +15,7 @@ class DishPhotosController < ApplicationController
 
   def create
     @photo = DishPhoto.new(params[:dish_photo])
+    @photo.uploader = current_user
 
     if @photo.save
       redirect_to @photo.dish, notice: "Foto erfolgreich hochgeladen."

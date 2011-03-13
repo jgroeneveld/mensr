@@ -1,5 +1,13 @@
 .dish_photo_facebox
   = image_tag @photo.picture.url(:large)
-  .less_important_information
-    Bild vom
+
+  %div{style: 'clear: both'}
+
+  .less_important_information{style: 'float: left'}
+    Hochgeladen von
+    = @photo.uploader.name
+
+  .less_important_information{style: 'float: right'}
     = l @photo.created_at.to_date
+
+  %div{style: 'clear: both'}
