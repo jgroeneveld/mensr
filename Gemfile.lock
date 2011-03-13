@@ -111,6 +111,7 @@ GEM
     treetop (1.4.9)
       polyglot (>= 0.3.1)
     tzinfo (0.3.24)
+    yaml_db (0.2.0)
 
 PLATFORMS
   ruby
@@ -131,3 +132,4 @@ DEPENDENCIES
   sanitize
   simplecov
   sqlite3
+  yaml_db

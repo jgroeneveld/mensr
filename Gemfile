@@ -32,6 +32,8 @@ group :production do
   gem 'mysql2'
 end
 
+gem 'yaml_db'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
