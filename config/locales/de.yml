@@ -7,6 +7,7 @@ de:
   fetch_complete: "Die aktuellen Mensadaten wurden eingelesen."
   rate_success: "Vielen Dank für die Bewertung."
   rate_failure: "Maximale Anzahl Gerichte für den %{date} bewertet."
+  delete_photo: "Foto löschen?"
 
   number:
     currency:

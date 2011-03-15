@@ -1,4 +1,6 @@
 class DishPhotosController < ApplicationController
+  before_filter :authenticate_user!, only: [:destroy]
+
   def new
     if !current_user
       redirect_to login_path
@@ -24,6 +26,22 @@ class DishPhotosController < ApplicationController
         format.html { render :action => "new" }
         format.xml  { render :xml => @photo.errors, :status => :unprocessable_entity }
       end
+    end
+  end
+
+  def destroy
+    if !current_user.admin?
+      flash[:alert] = t(:admin_only)
+      redirect_to today_path
+      return
+    end
+
+    @photo = DishPhoto.find(params[:id])
+
+    if @photo.destroy
+      redirect_to @photo.dish, notice: "Foto entfernt."
+    else
+      redirect_to @photo.dish, notice: "Fehler."
     end
   end
 

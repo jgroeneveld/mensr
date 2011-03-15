@@ -6,6 +6,8 @@
   .less_important_information{style: 'float: left'}
     Hochgeladen von
     = @photo.uploader.name
+    - if user_signed_in? and current_user.admin?
+      = link_to t('delete_photo'), dish_photo_path(@photo), confirm: t('are_you_sure'), method: :delete
 
   .less_important_information{style: 'float: right'}
     = l @photo.created_at.to_date
