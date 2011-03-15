@@ -1,8 +1,11 @@
 require 'spec_helper'
 
 describe FetchController do
+  include Devise::TestHelpers
+
   it "should should be successful" do
-    @current_user = Factory(:user, is_admin: true)
+    @user = Factory(:user, admin: true)
+    sign_in @user
     controller.stub!(:current_user).and_return(@current_user)
 
     mensa = Factory(:mensa)
@@ -17,7 +20,8 @@ describe FetchController do
   end
 
   it "should fail if not admin" do
-    @current_user = Factory(:user, is_admin: false)
+    @user = Factory(:user, admin: false)
+    sign_in @user
     controller.stub!(:current_user).and_return(@current_user)
 
     mensa = Factory(:mensa)

@@ -1,5 +1,8 @@
 de:
 
+  hello: "Hallo"
+  back: "Zurück"
+  are_you_sure: "Sind sie sicher?"
   admin_only: "Das dürfen nur Administratoren!"
   fetch_complete: "Die aktuellen Mensadaten wurden eingelesen."
   rate_success: "Vielen Dank für die Bewertung."

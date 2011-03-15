@@ -1,0 +1,28 @@
+= link_to t('back'), :back, class: "nav_button"
+
+.content
+  %h2= t('user.edit')
+  - form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+    = devise_error_messages!
+    %fieldset
+      .field
+        = f.label :name
+        = f.text_field :name
+      .field
+        = f.label :email
+        = f.text_field :email
+    %fieldset
+      %legend= t('user.leave_blank')
+      .field
+        = f.label :password
+        = f.password_field :password
+      .field
+        = f.label :password_confirmation
+        = f.password_field :password_confirmation
+    %fieldset
+      %legend= t('user.current_password_to_confirm')
+      .field
+        = f.label :current_password
+        = f.text_field :current_password
+    .actions= f.submit t('user.update')
+  = link_to t('user.cancel'), registration_path(resource_name), :confirm => t('are_you_sure'), :method => :delete

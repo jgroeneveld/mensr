@@ -13,13 +13,17 @@ gem 'yaml_db'
 
 gem 'rack-ssl-enforcer'
 
+gem 'devise'
+
 group :development do
+  gem 'mongrel'
   gem 'rspec-rails'
   gem 'annotate-models'
   gem 'hirb'
   gem 'factory_girl_rails'
   gem 'ruby-debug19'
   gem 'sqlite3'
+  gem 'ruby_parser'
 end
 
 group :test do

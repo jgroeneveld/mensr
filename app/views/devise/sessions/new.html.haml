@@ -1,0 +1,15 @@
+= link_to t('back'), :back, class: "nav_button"
+
+.content
+  %h2= t('user.signin')
+  - form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+    = devise_error_messages!
+    %fieldset
+      .field
+        = f.label :email
+        = f.text_field :email
+      .field
+        = f.label :password
+        = f.password_field :password
+    .actions= f.submit t('user.signin')
+  = render :partial => "devise/shared/links"

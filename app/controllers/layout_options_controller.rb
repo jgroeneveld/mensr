@@ -1,4 +1,6 @@
 class LayoutOptionsController < ApplicationController
+  before_filter :authenticate_user!
+  
   # PUT /layout_options/1
   # PUT /layout_options/1.xml
   def update

@@ -1,6 +1,8 @@
 # coding: utf-8
 
 class DishesController < ApplicationController
+  before_filter :authenticate_user!, only: :rate
+
   # GET /dishes/1
   # GET /dishes/1.xml
   def show

@@ -5,16 +5,10 @@ MensaBewerter::Application.routes.draw do
   match 'dishes/rate', as: 'rate_dish'
   match 'facebox/dish_photo' => 'facebox#dish_photo', as: 'facebox_dish_photo'
 
-  match 'signup' => 'users#new', :as => :signup
-  match 'logout' => 'sessions#destroy', :as => :logout
-  match 'login' => 'sessions#new', :as => :login
-  match 'user/edit' => 'users#edit', :as => :edit_current_user
   match 'layout_options/customize', as: 'customize_menue'
   match 'layout_options/sort_categories', as: 'sort_categories'
 
   resources :layout_options
-  resources :sessions
-  resources :users
   resources :ratings
   resources :menue_categories
   resources :mensas
@@ -28,6 +22,8 @@ MensaBewerter::Application.routes.draw do
 
   match 'fetch' => 'fetch#index'
 
-  root :to => "menue#week_menue"
+  devise_for :users, :path_names => { :sign_up => "register" }
+
+  root :to => "menue#day_menue"
 
 end

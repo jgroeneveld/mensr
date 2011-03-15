@@ -1,0 +1,20 @@
+= link_to t('back'), :back, class: "nav_button"
+
+.content
+  %h1= t('user.signup')
+  - form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+    = devise_error_messages!
+    %fieldset
+      .field
+        = f.label :name
+        = f.text_field :name
+      .field
+        = f.label :email
+        = f.text_field :email
+      .field
+        = f.label :password
+        = f.password_field :password
+      .field
+        = f.label :password_confirmation
+        = f.password_field :password_confirmation
+    .actions= f.submit t('user.signup')

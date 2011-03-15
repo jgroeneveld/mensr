@@ -2,6 +2,8 @@ require 'open-uri'
 require 'iconv'
 
 class FetchController < ApplicationController
+  before_filter :authenticate_user!
+  
   DISH_TAG_CONVERTS = {
     "Huhn.gif" => :chicken,
     "schwein.gif" => :pig,
@@ -15,7 +17,7 @@ class FetchController < ApplicationController
 
 
   def index
-    if !current_user || !current_user.is_admin?
+    if !current_user.admin?
       flash[:alert] = t(:admin_only)
       redirect_to today_path
       return

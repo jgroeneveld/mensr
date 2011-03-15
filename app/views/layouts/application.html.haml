@@ -14,13 +14,15 @@
         .logo
           = link_to (image_tag "logo.png"), :root
         .menu
-          - if current_user
+          - if user_signed_in?
             %span.element
-              Hallo #{"Meister " if current_user.is_admin?}#{link_to current_user.name, current_user}
-            %span.element= link_to "» Abmelden", logout_path
+              Hallo #{"Meister " if current_user.admin?}#{link_to current_user.name, edit_user_registration_path}
+            %span.element= link_to t('user.signout'), destroy_user_session_path
             = link_to image_tag('settings.png'), customize_menue_url
           - else
-            %span.element= link_to "» Anmelden", login_path
+            %span.element= link_to t('user.signin'), new_user_session_path
+            \/
+            %span.element= link_to t('user.signup'), new_user_registration_path
           %span.element= link_to image_tag('help.png'), about_path
       .secondary
         .menu

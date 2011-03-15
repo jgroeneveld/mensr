@@ -13,11 +13,7 @@ module RatingsHelper
       val << image_tag("rating_empty.png", id: "star_empty_#{identifier}_#{i}", title: "Tageswertung")
     end
 
-    if current_user
-      link_to(val, rate_dish_path(id: identifier, rating: i+1, for_detail_view: options[:for_detail_view]), remote: true)
-    else
-      link_to(val, login_path)
-    end
+    link_to(val, rate_dish_path(id: identifier, rating: i+1, for_detail_view: options[:for_detail_view]), remote: user_signed_in?)
   end
 
 

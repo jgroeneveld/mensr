@@ -48,4 +48,6 @@ MensaBewerter::Application.configure do
   config.active_support.deprecation = :notify
 
   config.middleware.use Rack::SslEnforcer
+
+  config.action_mailer.default_url_options = { :host => 'www.mensr.de' }
 end
