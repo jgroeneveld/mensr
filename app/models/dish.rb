@@ -20,6 +20,7 @@ class Dish < ActiveRecord::Base
   MAX_NUMBER_OF_PHOTOS = 9
 
   include DishesHelper
+  class NotServedYetError < StandardError; end
 
   belongs_to :mensa
   belongs_to :dish_set
@@ -64,6 +65,11 @@ class Dish < ActiveRecord::Base
   end
 
   def rate! value, user
+    if self.serve_date > Time.now.to_date
+      raise NotServedYetError
+    end
+
+
     rating = self.ratings.where(user_id: user.id).first
 
     if !rating

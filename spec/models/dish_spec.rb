@@ -37,6 +37,11 @@ describe Dish do
     @dish.average_rating.should == 1
   end
 
+  it 'should not update the rating if not yet served' do
+    @dish.serve_date = Time.now + 1.day
+    lambda {@dish.rate!(5, @user)}.should raise_error
+  end
+
   it "should give the keywords" do
     @dish.description = "Huhn mit Reis und Karotten"
     @dish.key_words.should include("Huhn")

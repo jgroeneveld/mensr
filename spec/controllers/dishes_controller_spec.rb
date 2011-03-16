@@ -28,14 +28,11 @@ describe DishesController do
     it "should rate the dish" do
       @request.env['HTTP_REFERER'] = 'http://can.i.net'
 
-      current_user = mock_model(User, :id => 1)
       dish = mock_model(Dish, :id => 1, :serve_date => Time.now.to_date)
-
-      controller.stub!(:current_user).and_return(current_user)
 
       Dish.stub(:find).with("1").and_return(dish)
 
-      dish.should_receive(:rate!).with(2, current_user)
+      dish.should_receive(:rate!).with(2, @user)
       get :rate, id: "1", rating: "2"
     end
   end

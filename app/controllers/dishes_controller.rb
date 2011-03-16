@@ -24,23 +24,29 @@ class DishesController < ApplicationController
     @for_detail_view = params[:for_detail_view] || false
 
     begin
-
       @dish.rate! rating, current_user
       respond_to do |format|
-        format.html { redirect_to (:back), notice: t(:rate_success) }
+        format.html { redirect_to :back, notice: t(:rate_success) }
         format.js
       end
 
-    rescue Exception => e
-
+    rescue Dish::NotServedYetError => e
       respond_to do |format|
-        format.html { redirect_to (:back), t(:rate_failure, date: l(@date)) }
+        format.html { redirect_to :back, alert: t(:rate_failure_not_served) }
+        format.js {
+          flash.now[:alert] = t(:rate_failure_not_served)
+          render template: 'dishes/rate_failure.js.erb'
+        }
+      end
+
+    rescue Exception => e
+      respond_to do |format|
+        format.html { redirect_to :back, alert: t(:rate_failure, date: l(@date)) }
         format.js {
           flash.now[:alert] = t(:rate_failure, date: l(@date))
           render template: 'dishes/rate_failure.js.erb'
         }
       end
-
     end
 
   end
