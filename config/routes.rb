@@ -4,6 +4,8 @@ MensaBewerter::Application.routes.draw do
 
   match 'dishes/rate', as: 'rate_dish'
   match 'facebox/dish_photo' => 'facebox#dish_photo', as: 'facebox_dish_photo'
+  match 'facebox/ratings_for_dish_set' => 'facebox#ratings_for_dish_set', as: 'facebox_ratings_for_dish_set'
+  match 'facebox/ratings_for_dish' => 'facebox#ratings_for_dish', as: 'facebox_ratings_for_dish'
 
   match 'layout_options/customize', as: 'customize_menue'
   match 'layout_options/sort_categories', as: 'sort_categories'

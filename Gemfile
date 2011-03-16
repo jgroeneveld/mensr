@@ -15,6 +15,8 @@ gem 'rack-ssl-enforcer'
 
 gem 'devise'
 
+gem 'gchartrb'
+
 group :development do
   gem 'mongrel'
   gem 'rspec-rails'

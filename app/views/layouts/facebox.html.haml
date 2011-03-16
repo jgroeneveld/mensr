@@ -5,7 +5,8 @@
     = csrf_meta_tag
 
   %body{bgcolor: "#eff6fe"}
-    = yield
+    .facebox_content_container
+      = yield
 
     :javascript
       center_element('facebox');

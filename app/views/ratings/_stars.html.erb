@@ -20,7 +20,9 @@
     <% end %>
   </div>
 
-  <%= raw("<div class='rating_count less_important_information'>(#{rating_count})</div>") if rating_count %>
+    <div class='rating_count less_important_information'>
+    <%= raw("(#{link_to rating_count, facebox_ratings_for_dish_path(id: identifier), rel: 'facebox'})") if rating_count %>
+  </div>
 
   <div style="clear: both"></div>
 </div>

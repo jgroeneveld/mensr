@@ -45,6 +45,7 @@ GEM
     factory_girl_rails (1.0.1)
       factory_girl (~> 1.3)
       railties (>= 3.0.0)
+    gchartrb (0.8)
     gem_plugin (0.2.3)
     haml (3.0.25)
     hirb (0.4.0)
@@ -135,6 +136,7 @@ DEPENDENCIES
   bcrypt-ruby
   devise
   factory_girl_rails
+  gchartrb
   haml
   hirb
   hpricot

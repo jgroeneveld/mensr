@@ -33,8 +33,8 @@ de:
 
   devise:
     failure:
-      unauthenticated: 'Sie müssen sich anmelden oder registrieren, bevor Sie weiterfahren können.'
-      unconfirmed: 'Sie müssen Ihren Account bestätigen, bevor Sie weiterfahren können.'
+      unauthenticated: 'Sie müssen sich anmelden oder registrieren, bevor Sie fortfahren können.'
+      unconfirmed: 'Sie müssen Ihren Account bestätigen, bevor Sie fortfahren können.'
       locked: 'Ihr Account ist gesperrt.'
       invalid: 'Ungültige Anmeldedaten.'
       invalid_token: 'Invalid authentication token.'
@@ -44,10 +44,10 @@ de:
       signed_in: 'Erfolgreich angemeldet.'
       signed_out: 'Erfolgreich abgemeldet.'
     passwords:
-      send_instructions: 'Sie erhalten in wenigen Minuten eine E-Mail mit der Anleitung, wie Sie ihr Passwort zurücksetzten können.' 
+      send_instructions: 'Sie erhalten in wenigen Minuten eine E-Mail mit der Anleitung, wie Sie ihr Passwort zurücksetzten können.'
       updated: 'Ihr Passwort wurde geändert. Sie sind angemeldet.'
     confirmations:
-      send_instructions: 'Sie erhalten in wenigen Minuten eine E-Mail mit der Anleitung, wie Sie ihr Passwort zurücksetzten können.' 
+      send_instructions: 'Sie erhalten in wenigen Minuten eine E-Mail mit der Anleitung, wie Sie ihr Passwort zurücksetzten können.'
       updated: 'Ihr Passwort wurde geändert. Sie sind angemeldet.'
     registrations:
       signed_up: 'Sie haben sich erfolgreich registriert. Es kann sein, dass Sie eine Aktivierungs-E-Mail erhalten.'

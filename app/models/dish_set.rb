@@ -36,6 +36,12 @@ class DishSet < ActiveRecord::Base
     matches.to_f/self.common_key_words_array.count.to_f
   end
 
+  def ratings
+    ratings = []
+    self.dishes.each {|d| ratings |= d.ratings }
+    ratings
+  end
+
   def update_average_rating!
     sum = 0
     rates = 0

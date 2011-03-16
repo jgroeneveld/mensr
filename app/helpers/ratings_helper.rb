@@ -1,3 +1,5 @@
+require 'google_chart'
+
 module RatingsHelper
 
   def print_star_for_dish identifier, i, options={}
@@ -22,6 +24,23 @@ module RatingsHelper
       image_tag "rating_for_set_filled.png", title: "Gesamtwertung"
     else
       image_tag "rating_for_set_empty.png", title: "Gesamtwertung"
+    end
+  end
+
+  def chart_for_ratings ratings
+    stars = [0, 0, 0, 0, 0]
+    stars.each_index do |i|
+      ratings.each {|r| stars[i] += 1 if r.value == (i+1) }
+    end
+
+
+    GoogleChart::PieChart.new('350x200', "Bewertungen") do |c|
+      stars.each_index do |i|
+        c.data "#{i+1} Sterne (#{stars[i]})", stars[i] if stars[i] > 0
+      end
+
+      c.fill :background, :solid, color: "eff6fe"
+      return c.to_url
     end
   end
 end
