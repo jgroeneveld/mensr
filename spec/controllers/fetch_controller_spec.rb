@@ -4,9 +4,8 @@ describe FetchController do
   include Devise::TestHelpers
 
   it "should should be successful" do
-    @user = Factory(:user, admin: true)
-    sign_in @user
-    controller.stub!(:current_user).and_return(@current_user)
+    @current_user = Factory(:user, admin: true)
+    sign_in @current_user
 
     mensa = Factory(:mensa)
 
@@ -22,7 +21,6 @@ describe FetchController do
   it "should fail if not admin" do
     @user = Factory(:user, admin: false)
     sign_in @user
-    controller.stub!(:current_user).and_return(@current_user)
 
     mensa = Factory(:mensa)
 

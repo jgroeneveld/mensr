@@ -10,6 +10,7 @@ describe LayoutOptionsController do
   before (:each) do
     @user = Factory.create(:user)
     sign_in @user
+    @user.layout_option = mock_layout_option
   end
 
   def mock_layout_option(stubs={})
@@ -18,21 +19,13 @@ describe LayoutOptionsController do
 
   describe "PUT update" do
     describe "with valid params" do
-      it "updates the requested layout_option" do
-        LayoutOption.stub(:find).with("37") { mock_layout_option }
+      it "updates the layout option of the current user" do
         mock_layout_option.should_receive(:update_attributes).with({'these' => 'params'})
         put :update, :id => "37", :layout_option => {'these' => 'params'}
       end
 
-      it "assigns the requested layout_option as @layout_option" do
-        LayoutOption.stub(:find) { mock_layout_option(:update_attributes => true) }
-        put :update, :id => "1"
-        assigns(:layout_option).should be(mock_layout_option)
-      end
-
-      it "redirects to the layout_option" do
-        LayoutOption.stub(:find) { mock_layout_option(:update_attributes => true) }
-        put :update, :id => "1"
+      it "redirects to the customize path" do
+        put :update, :id => @user.layout_option.id
         response.should redirect_to(customize_menue_path)
       end
     end
