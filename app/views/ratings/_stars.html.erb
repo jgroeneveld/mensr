@@ -3,14 +3,16 @@
 <% for_detail_view ||= false %>
 
 <div class='rating' id='rating_for_<%= dish.id %>'>
-  <%- if user_signed_in? and dish.users.include? current_user %>
-    <div class='rating_star' style='margin-right: 0.5em;'>
+  <div class='rating_star' style='margin-right: 0.5em;'>
+    <%- if user_signed_in? and dish.users.include? current_user %>
       <%= link_to(
             image_tag("delete.png"), 
             delete_rating_path(id: dish.id, for_detail_view: for_detail_view), 
             remote: user_signed_in?) %>
-    </div>
-  <%- end %>
+    <%- else %>
+      <%= image_tag("empty.png") %>
+    <%- end %>
+  </div>
 
   <div class='rating_stars' onmouseout="update_rating_stars(<%= "#{dish.id}, #{rating-1}" %>)">
     <% j = rating %>

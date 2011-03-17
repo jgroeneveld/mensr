@@ -2,6 +2,9 @@
 <% rating_count ||= nil %>
 
 <div class='rating' id='set_rating_for_<%= identifier %>'>
+  <div class='rating_star' style='margin-right: 0.5em;'>
+    <%= image_tag("empty.png") %>
+  </div>
 
   <div class='rating_stars'>
     <% j = rating %>

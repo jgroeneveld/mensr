@@ -26,7 +26,7 @@
 
   .dish_details_rating
     .less_important_information Tageswertung
-    = render partial: "ratings/stars", locals: {identifier: @dish.id, rating: @dish.average_rating, rating_count: @dish.ratings.count, for_detail_view: true}
+    = render partial: "ratings/stars", locals: {dish: @dish, rating: @dish.average_rating, rating_count: @dish.ratings.count, for_detail_view: true}
 
   .dish_details_rating.set_rating
     .less_important_information Gesamtwertung
