@@ -29,6 +29,7 @@ class Dish < ActiveRecord::Base
 
   has_many :tags, class_name: 'DishTag'
   has_many :ratings
+  has_many :users, through: :ratings
 
   validates_length_of :description, minimum: 5
 
@@ -73,20 +74,25 @@ class Dish < ActiveRecord::Base
     rating = self.ratings.where(user_id: user.id).first
 
     if !rating
-      rating = Rating.new
-      rating.user = user
-      rating.dish = self
+      rating = Rating.new user: user, dish: self
     end
 
     rating.value = value
     rating.save!
-
-    self.average_rating = ratings.average("value").to_f.round
-    self.save!
-
-    self.dish_set.update_average_rating!
+    self.reload
 
     self.average_rating
+  end
+
+  def delete_rating user
+    ratings.where(user_id: user.id).first.destroy
+    self.reload
+  end
+
+  def update_ratings
+    self.update_attribute :average_rating, ratings.average("value").to_f.round
+    self.dish_set.update_average_rating!
+    self.reload
   end
 
   def key_words

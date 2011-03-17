@@ -31,5 +31,9 @@ describe DishesController do
       { :delete => "/dishes/1" }.should route_to(:controller => "dishes", :action => "destroy", :id => "1")
     end
 
+    it "recognizes and generates #delete_rating" do
+      { :delete => "/dishes/delete_rating" }.should route_to(:controller => "dishes", :action => "delete_rating")
+    end
+
   end
 end
