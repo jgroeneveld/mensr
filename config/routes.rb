@@ -3,6 +3,7 @@ MensaBewerter::Application.routes.draw do
   match 'page/about', as: 'about'
 
   match 'dishes/rate', as: 'rate_dish'
+  match 'dishes/delete_rating', as: 'delete_rating'
   match 'facebox/dish_photo' => 'facebox#dish_photo', as: 'facebox_dish_photo'
   match 'facebox/ratings_for_dish_set' => 'facebox#ratings_for_dish_set', as: 'facebox_ratings_for_dish_set'
   match 'facebox/ratings_for_dish' => 'facebox#ratings_for_dish', as: 'facebox_ratings_for_dish'

@@ -43,17 +43,12 @@ class DishSet < ActiveRecord::Base
   end
 
   def update_average_rating!
-    sum = 0
-    rates = 0
+    sum = dishes.sum('ratings.value', joins: :ratings)
+    rates = dishes.count('ratings.value', joins: :ratings)
 
-    self.dishes.each do |d|
-      d.ratings.each do |r|
-        sum += r.value
-        rates += 1
-      end
-    end
 
-    self.average_rating = (sum.to_f/rates.to_f).round
+
+    self.average_rating = rates == 0 ? 0 : (sum.to_f/rates.to_f).round
     self.ratings_count = rates
     self.save!
   end

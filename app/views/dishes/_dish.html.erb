@@ -6,7 +6,7 @@
 
   <% if show_rating? %>
     <div class='dish_rating' id='stars_for_dish_<%= dish.id %>'>
-      <%= render partial: "ratings/stars", locals: {identifier: dish.id, rating: dish.average_rating, rating_count: dish.ratings.count} %>
+      <%= render partial: "ratings/stars", locals: {dish: dish, rating: dish.average_rating, rating_count: dish.ratings.count} %>
     </div>
 
     <div style="clear: both"></div>

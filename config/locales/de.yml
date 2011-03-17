@@ -6,9 +6,12 @@ de:
   admin_only: "Das dürfen nur Administratoren!"
   fetch_complete: "Die aktuellen Mensadaten wurden eingelesen."
   rate_success: "Vielen Dank für die Bewertung."
+  rating_destroyed: "Die Bewertung wurde gelöscht."
   rate_failure: "Maximale Anzahl Gerichte für den %{date} bewertet."
   rate_failure_not_served: "Das Gericht wurde noch nicht serviert."
   delete_photo: "Foto löschen?"
+
+  general_failure: "Es ist ein unerwarteter Fehler aufgetreten."
 
   number:
     currency:

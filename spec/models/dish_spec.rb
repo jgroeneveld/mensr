@@ -29,12 +29,15 @@ describe Dish do
     lambda {@dish.rate!(-10, @user)}.should raise_error
   end
 
-  it "should update the rating of an user of one dish" do
+  it "should update the rating of an user of one dish and delete it" do
     @dish.rate! 5, @user
     @dish.average_rating.should == 5
 
     @dish.rate! 1, @user
     @dish.average_rating.should == 1
+
+    @dish.delete_rating @user
+    @dish.average_rating.should == 0
   end
 
   it 'should not update the rating if not yet served' do

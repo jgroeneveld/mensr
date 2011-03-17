@@ -1,18 +1,26 @@
-<% # locals identifier, rating, rating_count  %>
+<% # locals dish, rating, rating_count  %>
 <% rating_count ||= nil %>
 <% for_detail_view ||= false %>
 
-<div class='rating' id='rating_for_<%= identifier %>'>
+<div class='rating' id='rating_for_<%= dish.id %>'>
+  <%- if user_signed_in? and dish.users.include? current_user %>
+    <div class='rating_star' style='margin-right: 0.5em;'>
+      <%= link_to(
+            image_tag("delete.png"), 
+            delete_rating_path(id: dish.id, for_detail_view: for_detail_view), 
+            remote: user_signed_in?) %>
+    </div>
+  <%- end %>
 
-  <div class='rating_stars' onmouseout="update_rating_stars(<%= "#{identifier}, #{rating-1}" %>)">
+  <div class='rating_stars' onmouseout="update_rating_stars(<%= "#{dish.id}, #{rating-1}" %>)">
     <% j = rating %>
     <% (5).times do |i| %>
 
-        <div class='rating_star' onmouseover="update_rating_stars(<%= "#{identifier}, #{i}" %>)">
+        <div class='rating_star' onmouseover="update_rating_stars(<%= "#{dish.id}, #{i}" %>)">
           <% if j > 0 %>
-            <%= print_star_for_dish identifier, i, filled: true, for_detail_view: for_detail_view %>
+            <%= print_star_for_dish dish.id, i, filled: true, for_detail_view: for_detail_view %>
           <% else %>
-            <%= print_star_for_dish identifier, i, filled: false, for_detail_view: for_detail_view %>
+            <%= print_star_for_dish dish.id, i, filled: false, for_detail_view: for_detail_view %>
           <% end %>
         </div>
 
@@ -20,8 +28,8 @@
     <% end %>
   </div>
 
-    <div class='rating_count less_important_information'>
-    <%= raw("(#{link_to rating_count, facebox_ratings_for_dish_path(id: identifier), rel: 'facebox'})") if rating_count %>
+  <div class='rating_count less_important_information'>
+    <%= raw("(#{link_to rating_count, facebox_ratings_for_dish_path(id: dish.id), rel: 'facebox'})") if rating_count %>
   </div>
 
   <div style="clear: both"></div>
