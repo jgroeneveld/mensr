@@ -1,6 +1,12 @@
-require 'google_chart'
-
 module RatingsHelper
+
+  def print_simple_star filled
+    if filled
+      image_tag("rating_filled.png")
+    else
+      image_tag("rating_empty.png")
+    end
+  end
 
   def print_star_for_dish identifier, i, options={}
     options[:for_detail_view] ||= false
@@ -25,6 +31,19 @@ module RatingsHelper
     else
       image_tag "rating_for_set_empty.png", title: "Gesamtwertung"
     end
+  end
+
+  def distributions_for_ratings ratings
+    dist = [0, 0, 0, 0, 0]
+    ratings.each {|r| dist[r.value-1] += 1 }
+
+    stars = 0
+    distributions = dist.collect do |d|
+      stars += 1
+      {stars: stars, count: d, percentage: (d.to_f/ratings.count.to_f)*100}
+    end
+
+    distributions.reverse
   end
 
   def chart_for_ratings ratings

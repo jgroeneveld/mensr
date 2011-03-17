@@ -12,15 +12,17 @@ class FaceboxController < ApplicationController
 
   def ratings_for_dish
     dish = Dish.find(params[:id])
-    url = chart_for_ratings dish.ratings
-
-    render template: 'facebox/ratings_distribution', locals: {url: url}
+    self.ratings_for_obj dish
   end
 
   def ratings_for_dish_set
     dish_set = DishSet.find(params[:id])
-    url = chart_for_ratings dish_set.ratings
+    self.ratings_for_obj dish_set
+  end
 
-    render template: 'facebox/ratings_distribution', locals: {url: url}
+  def ratings_for_obj obj
+    distributions = distributions_for_ratings obj.ratings
+
+    render template: 'facebox/ratings_distribution', locals: {distributions: distributions, average:obj.average_rating}
   end
 end

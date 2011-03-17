@@ -1,2 +1,13 @@
-.div{style: 'margin: auto'}
-  = image_tag url
+.rating_distribution_container
+  .rating_distribution
+    - distributions.each do |d|
+      .rating_distribution_description #{d[:stars]} Sterne:
+      .rating_distribution_line
+        .rating_distribution_filled{style: "width: #{d[:percentage]}%"}
+      .rating_distribution_count (#{d[:count]})
+      %div{style: 'clear: both'}
+
+  .rating_distribution_average
+    = render partial: 'ratings/simple_stars', locals:{rating: average}
+
+  %div{style: 'clear: both'}

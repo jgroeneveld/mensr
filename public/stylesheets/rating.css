@@ -1,5 +1,5 @@
 .rating {
-  
+
 }
 
 .rating_stars {
@@ -10,7 +10,7 @@
   float: left;
   margin: 0px;
   width: 12px;
-  height: 12px;  
+  height: 12px;
 }
 
 .rating_star img {
@@ -20,4 +20,53 @@
 
 .rating_count {
   float: right;
+}
+
+.rating_distribution_container {
+  width: 350px;
+}
+
+.rating_distribution {
+  float: left;
+}
+
+.rating_distribution_line {
+  float: left;
+  width: 100px;
+  height: 15px;
+  background-color: #b3d2ff;
+}
+
+.rating_distribution_filled {
+  height: 15px;
+  background-color: #161988;
+}
+
+.rating_distribution_description {
+  float: left;
+  font-size: 12px;
+  margin-right: 15px;
+}
+
+.rating_distribution_count {
+  float: left;
+  font-size: 10px;
+  margin-left: 5px;
+}
+
+.rating_distribution_average {
+  float: left;
+  margin-left: 30px;
+}
+
+.rating_distribution_average .rating_star {
+  float: left;
+  margin: 0px;
+  width: 25px;
+  height: 25px;
+}
+
+.rating_distribution_average .rating_star img {
+  width: 25px;
+  height: 25px;
 }

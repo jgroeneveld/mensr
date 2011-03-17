@@ -1,0 +1,22 @@
+<% # locals rating  %>
+
+<div class='rating'>
+
+  <div class='rating_stars'>
+    <% j = rating %>
+    <% (5).times do |i| %>
+
+        <div class='rating_star'>
+          <% if j > 0 %>
+            <%= print_simple_star true %>
+          <% else %>
+            <%= print_simple_star false %>
+          <% end %>
+        </div>
+
+      <% j -= 1 %>
+    <% end %>
+  </div>
+
+  <div style="clear: both"></div>
+</div>
