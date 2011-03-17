@@ -94,7 +94,8 @@ a .dish_description:hover {
 
 
 .weekmenue table {
-  width: 100%;
+  margin: auto;
+  width: 98%;
   font-size: inherit;
   border-spacing: 0px;
 }
