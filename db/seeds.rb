@@ -104,6 +104,10 @@ essen1.parse_datas << CategoryParseData.create(row: 4, col: 1)
 air.menue_categories << essen1
 default_category_order << essen1.id
 
+essen2 = MenueCategory.create(name: :essen_2)
+essen2.parse_datas << CategoryParseData.create(row: 6, col: 1)
+air.menue_categories << essen2
+default_category_order << essen2.id
 # ========= Neustadtswall =========
 
 neustadt = Mensa.new
