@@ -18,3 +18,6 @@
         = f.label :password_confirmation
         = f.password_field :password_confirmation
     .actions= f.submit t('user.signup')
+
+:javascript
+  $('user_name').focus();

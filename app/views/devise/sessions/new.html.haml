@@ -17,3 +17,6 @@
           = f.check_box :remember_me
     .actions= f.submit t('user.signin')
   = render :partial => "devise/shared/links"
+
+:javascript
+  $('user_email').focus();
