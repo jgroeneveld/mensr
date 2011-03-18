@@ -52,6 +52,6 @@
         .entry{class: cycle("first","second")}
           %a{href: dish_path(d)}
             .description= d.description
-          .rating= render partial: "ratings/stars", locals: {identifier: d.id, rating: d.average_rating, rating_count: d.ratings.count, for_detail_view: true}
+          .rating= render partial: "ratings/stars", locals: {identifier: d.id, rating: d.average_rating, rating_count: d.ratings.count, for_detail_view: true, dish: d}
           .date.less_important_information= l d.serve_date
           %div{:style => "clear: both"}
