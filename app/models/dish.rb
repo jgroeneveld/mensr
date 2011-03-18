@@ -25,10 +25,10 @@ class Dish < ActiveRecord::Base
   belongs_to :mensa
   belongs_to :dish_set
   belongs_to :menue_category
-  has_many :photos, class_name: 'DishPhoto'
+  has_many :photos, class_name: 'DishPhoto', dependent: :destroy
 
   has_many :tags, class_name: 'DishTag'
-  has_many :ratings
+  has_many :ratings, dependent: :destroy
   has_many :users, through: :ratings
 
   validates_length_of :description, minimum: 5

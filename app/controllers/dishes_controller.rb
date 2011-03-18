@@ -25,8 +25,8 @@ class DishesController < ApplicationController
       @dish.rate! rating, current_user
       respond_to do |format|
         format.html { redirect_to :back, notice: t(:rate_success) }
-        format.js { 
-          flash.now[:notice] = t(:rate_success) 
+        format.js {
+          flash.now[:notice] = t(:rate_success)
           render template: 'dishes/rate.js.erb'
         }
       end
@@ -41,6 +41,7 @@ class DishesController < ApplicationController
       end
 
     rescue Exception => e
+      p e
       respond_to do |format|
         format.html { redirect_to :back, alert: t(:rate_failure, date: l(@dish.serve_date)) }
         format.js {
@@ -57,7 +58,7 @@ class DishesController < ApplicationController
       @dish.delete_rating current_user
       respond_to do |format|
         format.html { redirect_to :back, notice: t(:rating_destroyed) }
-        format.js { 
+        format.js {
           flash.now[:notice] = t(:rating_destroyed)
           render template: 'dishes/rate.js.erb'
         }

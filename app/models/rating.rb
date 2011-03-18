@@ -15,8 +15,12 @@ class Rating < ActiveRecord::Base
   belongs_to :user
   belongs_to :dish
 
+  has_one :action, as: :affected, dependent: :destroy
+
   after_save :update_ratings
   after_destroy :update_ratings
+
+  after_save :update_action
 
   validates_inclusion_of :value, in: 1..5
   validate :ratings_count_by_user, on: :create
@@ -39,6 +43,23 @@ class Rating < ActiveRecord::Base
   def update_ratings
     self.dish.update_ratings
     self.dish.reload
+  end
+
+  def update_action
+    action = self.action
+
+    if !action
+      action = Action.new
+      action.user = self.user
+      action.dish = self.dish
+      action.affected = self
+
+      action.kind = :new
+    else
+      action.kind = :edit
+    end
+
+    action.save!
   end
 
 end

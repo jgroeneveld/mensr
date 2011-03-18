@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110313125216
+# Schema version: 20110315162444
 #
 # Table name: dish_photos
 #
@@ -11,12 +11,15 @@
 #  picture_updated_at   :datetime
 #  created_at           :datetime
 #  updated_at           :datetime
-#  user_id              :integer
+#  uploader_id          :integer
 #
 
 class DishPhoto < ActiveRecord::Base
   belongs_to :dish
   belongs_to :uploader, class_name: 'User'
+
+  has_one :action, as: :affected, dependent: :destroy
+
   has_attached_file :picture, styles: {
     large: "640x480>",
     middle: "200x150>",
@@ -27,4 +30,24 @@ class DishPhoto < ActiveRecord::Base
   validates_attachment_presence :picture
   validates_attachment_size :picture, less_than: 1.megabyte
   validates_attachment_content_type :picture, content_type: ['image/jpeg', 'image/pjpeg','image/png', 'image/x-png', 'image/gif']
+
+  after_save :update_action
+
+  def update_action
+    action = self.action
+
+    if !action
+      action = Action.new
+      action.user = self.uploader
+      action.dish = self.dish
+      action.affected = self
+
+      action.kind = :new
+    else
+      action.kind = :edit
+    end
+
+    action.save!
+  end
+
 end

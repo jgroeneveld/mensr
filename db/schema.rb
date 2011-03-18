@@ -10,7 +10,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110315162444) do
+ActiveRecord::Schema.define(:version => 20110318143110) do
+
+  create_table "actions", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "kind"
+    t.integer  "dish_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "affected_id"
+    t.string   "affected_type"
+  end
 
   create_table "category_parse_datas", :force => true do |t|
     t.integer  "row"

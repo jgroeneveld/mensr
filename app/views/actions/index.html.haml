@@ -1,0 +1,8 @@
+.content
+  %h2 Was geschieht?
+  - @actions.each do |action|
+    .action{class: cycle('first', 'second')}
+      .action_date= l action.updated_at, format: "%d.%m"
+      .action_description= description_for(action)
+      .action_additional= additional_for(action)
+      %div{style: 'clear: both;'}

@@ -1,0 +1,28 @@
+.action {
+
+}
+
+.action.first {
+
+}
+
+.action.second {
+  background-color: white;
+}
+
+.action_date {
+  float: left;
+  width: 50px;
+
+  color: gray;
+  font-size: 10px;
+}
+
+.action_description {
+  float: left;
+  width: 370px
+}
+
+.action_additional {
+  float: left;
+}
