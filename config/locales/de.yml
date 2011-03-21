@@ -13,6 +13,9 @@ de:
 
   general_failure: "Es ist ein unerwarteter Fehler aufgetreten."
 
+  dish_rating: "Tagesdurchschnitt"
+  dish_set_rating: "Gesamtdurchschnitt"
+
   number:
     currency:
           format:

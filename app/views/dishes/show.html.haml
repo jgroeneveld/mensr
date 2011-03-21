@@ -25,11 +25,11 @@
 
 
   .dish_details_rating
-    .less_important_information Tageswertung
+    .less_important_information= t(:dish_rating)
     = render partial: "ratings/stars", locals: {dish: @dish, rating: @dish.average_rating, rating_count: @dish.ratings.count, for_detail_view: true}
 
   .dish_details_rating.set_rating
-    .less_important_information Gesamtwertung
+    .less_important_information= t(:dish_set_rating)
     = render partial: "ratings/stars_for_set", locals: {identifier: @dish.dish_set.id, rating: @dish.dish_set.average_rating, rating_count: @dish.dish_set.ratings_count}
 
   .dish_details_prices.less_important_information
