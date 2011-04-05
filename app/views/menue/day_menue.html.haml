@@ -31,6 +31,7 @@
               = render partial: 'dishes/dish', locals:{dish: dish}
             - else
               = render partial: 'dishes/not_real_dish', locals:{dish: dish}
+  %div{style: 'clear:both'}
 
 - if @customize
   :javascript
