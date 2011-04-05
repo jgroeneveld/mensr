@@ -1,5 +1,8 @@
 <% # locals: dish %>
 
-<div class='dish_description'>
+<div class='dish_description' id='dish_<%= dish.id%>_description'>
   <%= format_dish_description dish.description %>
 </div>
+<script>
+  handleTooLongDishDescription('dish_<%= dish.id%>_description');
+</script>

@@ -11,7 +11,7 @@
 a .dish_description {
   color: #000;
   text-decoration: none;
-  min-height: 8em;
+  min-height: 96px;
 }
 
 a .dish_description:hover {
@@ -90,6 +90,10 @@ a .dish_description:hover {
   text-align: center;
 
   position: relative;
+}
+
+.day_menue .dish_description.too_long {
+  font-size: 10px;
 }
 
 #sortdishes {
