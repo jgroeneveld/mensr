@@ -4,6 +4,11 @@ class FaceboxController < ApplicationController
 
   def dish_photo
     @photo = DishPhoto.find(params[:id])
+    if @photo.uploader != nil
+      @uploadername = @photo.uploader.name
+    else
+      @uploadername = "'Unbekannt'"
+    end
 
     respond_to do |format|
       format.html
