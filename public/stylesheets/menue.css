@@ -169,3 +169,22 @@ td.table_controls{
   left: 10px;
   top: 10px;
 }
+
+.add_category {
+}
+
+.add_category img {
+  width: 16px;
+  height: 16px;
+}
+
+.remove_category {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+}
+
+.remove_category img {
+  width: 16px;
+  height: 16px;
+}

@@ -1,5 +1,10 @@
 - if @customize
   = link_to "Fertig", day_menue_path(date: @date), class: "nav_button", style: 'float: right;'
+  %h4 Versteckte Kategorien
+  - @not_visible_categories.each do |c|
+    .add_category{id: c.id}
+      = image_tag('add.png')
+      = "#{t c.name} (#{c.mensa.name})"
 - elsif current_user
   = link_to "Anpassen", day_menue_path(date: @date, customize: true), class: "nav_button", style: 'float: right;'
 
@@ -21,6 +26,7 @@
         .dish_container{id: "sortdishes_#{dish.menue_category.id}", style: "background-color: #{bg_color_for_mensa_id(dish.mensa_id)}"}
           - if @customize
             .drag_handle= image_tag 'drag_handle.png'
+            .remove_category{id: "#{dish.menue_category.id}"}= image_tag('remove.png')
           = dish.mensa.name
           %br/
           %b= t dish.menue_category.name
@@ -35,21 +41,56 @@
 
 - if @customize
   :javascript
-    Sortable.create('sortdishes', {
-      tag: 'div',
-      overlap: 'horizontal',
-      constraint: '',
-      handle: 'drag_handle',
-      scroll: window,
-      onUpdate: function() {
-        var seq = Sortable.serialize("sortdishes");
+    function makeSortable() {
+      Sortable.create('sortdishes', {
+        tag: 'div',
+        overlap: 'horizontal',
+        constraint: '',
+        handle: 'drag_handle',
+        scroll: window,
+        onUpdate: function() {
+          var seq = Sortable.serialize("sortdishes");
 
-        new Ajax.Request('#{escape_javascript sort_categories_url}', {
-              method: "post",
-              parameters: { data: seq }
+          new Ajax.Request('#{escape_javascript sort_categories_url}', {
+            method: "post",
+            parameters: { data: seq }
+          });
+        }
+      });
+    }
+
+    var elements = $$('.remove_category');
+    for (var i = 0; i < elements.length; i++) {
+      (function(el) {
+        Event.observe(el, 'click', function() {
+          new Ajax.Request('#{escape_javascript remove_category_url}', {
+            method: "post",
+            parameters: { id: el.id },
+            onSuccess: function() {
+              el.getOffsetParent().remove();
+            }
+          });
         });
-      }
-    });
+      })(elements[i]);
+    }
+
+    var elements = $$('.add_category');
+    for (var i = 0; i < elements.length; i++) {
+      (function(el) {
+        Event.observe(el, 'click', function() {
+          new Ajax.Request('#{escape_javascript add_category_url}', {
+            method: "post",
+            parameters: { id: el.id },
+            onSuccess: function() {
+              el.remove();
+            }
+          });
+        });
+      })(elements[i]);
+    }
+
+    makeSortable();
+
 
 :javascript
   handleTooLongDishDescriptions();

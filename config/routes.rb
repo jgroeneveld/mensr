@@ -10,7 +10,8 @@ MensaBewerter::Application.routes.draw do
 
   match 'layout_options/customize', as: 'customize_menue'
   match 'layout_options/sort_categories', as: 'sort_categories'
-
+  match 'layout_options/add_category', as: 'add_category'
+  match 'layout_options/remove_category', as: 'remove_category'
   match 'action_feed' => 'actions#index', as: 'action_feed'
 
   resources :layout_options

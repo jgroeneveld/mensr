@@ -31,4 +31,9 @@ class LayoutOption < ActiveRecord::Base
   def category_sort_order_array
     self.category_sort_order.split(",").collect{ |e| e.to_i }
   end
+
+  def category_sort_order_array= (a)
+    self.category_sort_order = a.join(',')
+
+  end
 end

@@ -1,6 +1,6 @@
 class LayoutOptionsController < ApplicationController
   before_filter :authenticate_user!
-  
+
   # PUT /layout_options/1
   # PUT /layout_options/1.xml
   def update
@@ -31,6 +31,27 @@ class LayoutOptionsController < ApplicationController
 
     @layout_option.category_sort_order = data
     @layout_option.save
+  end
 
+  def add_category
+    @layout_option = current_user.layout_option || LayoutOption.create(user_id: current_user.id)
+    @category_id = params[:id]
+
+    cats = @layout_option.category_sort_order_array
+    cats.unshift(@category_id.to_i)
+    @layout_option.category_sort_order_array = cats
+    @layout_option.save!
+    render text: ''
+  end
+
+  def remove_category
+    @layout_option = current_user.layout_option || LayoutOption.create(user_id: current_user.id)
+    @category_id = params[:id]
+
+    cats = @layout_option.category_sort_order_array
+    cats.delete(@category_id.to_i)
+    @layout_option.category_sort_order_array = cats
+    @layout_option.save!
+    render text: ''
   end
 end
