@@ -13,6 +13,7 @@ class DishesController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @dish }
+      format.json  { render :json => @dish }
     end
   end
 

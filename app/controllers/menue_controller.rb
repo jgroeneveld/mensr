@@ -15,7 +15,10 @@ class MenueController < ApplicationController
 
     @dishes.compact!
 
-
+    respond_to do |format|
+      format.html
+      format.json { render :json => @dishes}
+    end
   end
 
   def week_menue

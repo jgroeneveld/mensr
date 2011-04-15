@@ -1,3 +1,5 @@
+# coding: utf-8
+
 module ApplicationHelper
   def flash_message_exists?
     !flash[:notice].blank? || !flash[:alert].blank? || !flash[:error].blank?
@@ -10,5 +12,9 @@ module ApplicationHelper
     end
 
     flashes_string
+  end
+
+  def print_seperator
+    raw "<center><span style='display: inline; font-size: 120px; color: #cdd4ed;'>…</span></center>"
   end
 end
