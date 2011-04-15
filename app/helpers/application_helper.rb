@@ -15,6 +15,6 @@ module ApplicationHelper
   end
 
   def print_seperator
-    raw "<center><span style='display: inline; font-size: 120px; color: #cdd4ed;'>…</span></center>"
+    raw "<center><span class='seperator'>…</span></center>"
   end
 end

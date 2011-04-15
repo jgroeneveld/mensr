@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
   has_one :layout_option, dependent: :destroy
   has_many :actions, dependent: :destroy
 
-  devise :database_authenticatable, :rememberable, :trackable, :validatable, :registerable, :pepper => '' #, :confirmable, :recoverable
+  devise :database_authenticatable, :rememberable, :recoverable, :trackable, :validatable, :registerable, :pepper => '' #, :confirmable,
 
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me
 

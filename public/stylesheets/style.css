@@ -56,3 +56,9 @@ legend{
   padding-left:3px;
   padding-right:3px;
 }
+
+.seperator {
+  display: inline;
+  font-size: 120px;
+  color: #cdd4ed;
+}
