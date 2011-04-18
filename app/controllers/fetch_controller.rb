@@ -3,7 +3,7 @@ require 'iconv'
 
 class FetchController < ApplicationController
   before_filter :authenticate_user!
-  
+
   DISH_TAG_CONVERTS = {
     "Huhn.gif" => :chicken,
     "schwein.gif" => :pig,
@@ -38,13 +38,15 @@ class FetchController < ApplicationController
         end
       end
 
+      flash[:notice] = t(:fetch_complete)
+      redirect_to '/today'
+
     rescue Exception => e
       p "************** An error occured. <br />" + e.message
       render text: "An error occured. <br />" + e.message
     end
 
-    flash[:notice] = t(:fetch_complete)
-    redirect_to '/today'
+
   end
 
   private # ------------------------------------------------
@@ -78,19 +80,21 @@ class FetchController < ApplicationController
 
     (start_col..5).each do |j|
       if row[j]
-        price_a = process_price_td price_row[1+((j-1)*4)]
-        price_b = process_price_td price_row[3+((j-1)*4)]
 
-        dish = process_dish_td row[j]
-        dish.serve_date = @mon_date + (j-start_col).days
-        dish.price_a = price_a
-        dish.price_b = price_b
-        dish.menue_category = category
-
-        tags = fetch_dish_tags_from_html row[j].inner_html
-        tags.each { |tag| dish.tags << tag }
 
         begin
+          price_a = process_price_td price_row[1+((j-1)*4)]
+          price_b = process_price_td price_row[3+((j-1)*4)]
+
+          dish = process_dish_td row[j]
+          dish.serve_date = @mon_date + (j-start_col).days
+          dish.price_a = price_a
+          dish.price_b = price_b
+          dish.menue_category = category
+
+          tags = fetch_dish_tags_from_html row[j].inner_html
+          tags.each { |tag| dish.tags << tag }
+
           @mensa.dishes << dish
           dish.assign_best_set!
           dishes << dish
