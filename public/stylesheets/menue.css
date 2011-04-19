@@ -187,6 +187,14 @@ td.table_controls{
   height: 16px;
 }
 
+.add_category_image {
+  float: left;
+  width: 16px;
+  height: 16px;
+  margin: 2px;
+  margin-right: 5px;
+}
+
 .remove_category {
   position: absolute;
   right: 8px;

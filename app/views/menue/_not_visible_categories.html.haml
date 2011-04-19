@@ -5,4 +5,4 @@
 - else
   - categories.each do |c|
     .add_category{id: "add_category_#{c.id}"}
-      = link_to image_tag('add.png') + "#{t c.name} (#{c.mensa.name})", {controller: 'layout_options', action: 'add_category', id:c.id, date: date}, {remote: true}
+      = link_to raw('<div class="add_category_image">') + image_tag('add.png') + raw('</div> ') + "#{t c.name} (#{c.mensa.name})", {controller: 'layout_options', action: 'add_category', id:c.id, date: date}, {remote: true}
