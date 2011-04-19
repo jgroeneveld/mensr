@@ -1,4 +1,6 @@
 class LayoutOptionsController < ApplicationController
+  include LayoutOptionsHelper
+
   before_filter :authenticate_user!
 
   # PUT /layout_options/1
@@ -31,6 +33,7 @@ class LayoutOptionsController < ApplicationController
 
     @layout_option.category_sort_order = data
     @layout_option.save
+    render text: ''
   end
 
   def add_category
@@ -52,6 +55,7 @@ class LayoutOptionsController < ApplicationController
     cats.delete(@category_id.to_i)
     @layout_option.category_sort_order_array = cats
     @layout_option.save!
-    render text: ''
+
+    @not_visible_categories = find_not_visible_categories
   end
 end

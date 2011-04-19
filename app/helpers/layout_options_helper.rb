@@ -50,4 +50,16 @@ module LayoutOptionsHelper
     order.split(",").collect{ |e| e.to_i }
   end
 
+  def find_visible_categories
+    category_sort_order_array.collect { |cid|
+      MenueCategory.find cid
+    }
+  end
+
+  def find_not_visible_categories
+    not_visible_categories = Defaults.find(1).category_sort_order.split(",").map { |id| MenueCategory.find id.to_i }
+    not_visible_categories -= find_visible_categories
+
+    not_visible_categories
+  end
 end

@@ -1,14 +1,14 @@
 - if @customize
   = link_to "Fertig", day_menue_path(date: @date), class: "nav_button", style: 'float: right;'
+
   %h4 Versteckte Kategorien
-  - @not_visible_categories.each do |c|
-    .add_category{id: c.id}
-      = image_tag('add.png')
-      = "#{t c.name} (#{c.mensa.name})"
+  #not_visible_categories
+    = render partial: 'menue/not_visible_categories', locals: {categories: @not_visible_categories}
+
 - elsif current_user
   = link_to "Anpassen", day_menue_path(date: @date, customize: true), class: "nav_button", style: 'float: right;'
 
-%div{:style => "clear: both"}
+%div{style: "clear: both"}
 
 .day_menue
   .controls
@@ -68,21 +68,6 @@
             parameters: { id: el.id },
             onSuccess: function() {
               el.getOffsetParent().remove();
-            }
-          });
-        });
-      })(elements[i]);
-    }
-
-    var elements = $$('.add_category');
-    for (var i = 0; i < elements.length; i++) {
-      (function(el) {
-        Event.observe(el, 'click', function() {
-          new Ajax.Request('#{escape_javascript add_category_url}', {
-            method: "post",
-            parameters: { id: el.id },
-            onSuccess: function() {
-              el.remove();
             }
           });
         });
