@@ -24,9 +24,19 @@ class LayoutOption < ActiveRecord::Base
     self.like_words.split(",").collect{ |e| e.strip }
   end
 
+  def like_words_array= (a)
+    self.like_words = a.join(',')
+  end
+
+
   def dislike_words_array
     self.dislike_words.split(",").collect{ |e| e.strip }
   end
+
+  def dislike_words_array= (a)
+    self.dislike_words = a.join(',')
+  end
+
 
   def category_sort_order_array
     self.category_sort_order.split(",").collect{ |e| e.to_i }
@@ -34,6 +44,5 @@ class LayoutOption < ActiveRecord::Base
 
   def category_sort_order_array= (a)
     self.category_sort_order = a.join(',')
-
   end
 end

@@ -7,6 +7,7 @@ class LayoutOptionsController < ApplicationController
   # PUT /layout_options/1.xml
   def update
     @layout_option = current_user.layout_option
+    puts "********" + params.inspect
 
     respond_to do |format|
       if @layout_option.update_attributes(params[:layout_option])

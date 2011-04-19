@@ -35,13 +35,11 @@
     <legend>Hervorhebungen</legend>
     <div class = "field">
       <%= f.label :like_words %>
-      <%= f.text_field :like_words %>
-      <span class="like_word">Steak</span>
+      <%= text_field_tag :like_words_proxy, @layout_option.like_words %>
     </div>
     <div class = "field">
       <%= f.label :dislike_words %>
-      <%= f.text_field :dislike_words %>
-      <span class="dislike_word">Kapern</span>
+      <%= text_field_tag :dislike_words_proxy, @layout_option.dislike_words %>
     </div>
     <span class='less_important_information'>Worte durch Kommas getrennt eingeben</span>
   </fieldset>
@@ -50,3 +48,15 @@
     <%= f.submit %>
   </div>
 <% end %>
+
+<script type="text/javascript">
+  new Tagify('like_words_proxy', {
+    parameterName: 'layout_option[like_words_array]',
+    className: 'tagify_like_words'
+  });
+
+  new Tagify('dislike_words_proxy', {
+    parameterName: 'layout_option[dislike_words_array]',
+    className: 'tagify_dislike_words'
+  });
+</script>

@@ -57,6 +57,59 @@ legend{
   padding-right:3px;
 }
 
+span.tagify_like_words{
+  background-color:#f0feef;
+  border:solid 1px #aeda9b;
+  padding-left:3px;
+  padding-right:3px;
+  margin: 2px;
+  padding-right:20px;
+  position:relative;
+}
+
+span.tagify_dislike_words{
+  background-color:#feefef;
+  border:solid 1px #cd8888;
+  padding-left:3px;
+  padding-right:3px;
+  margin: 2px;
+  padding-right:20px;
+  position:relative;
+}
+
+div.tagify_like_words,
+div.tagify_dislike_words
+{
+  border:1px silver solid;
+  width:100%;
+  font-size:12px;
+  background-color: white;
+}
+
+div.tagify_like_words input,
+div.tagify_dislike_words input
+{
+  border:none;
+  padding:4px;
+  width:100px;
+  background: transparent;
+  font-family:Arial, sans-serif;
+}
+
+span.tagify_like_words span.tagify_like_words_remove,
+span.tagify_dislike_words span.tagify_dislike_words_remove
+{
+  display:block;
+  cursor:pointer;
+  background:transparent url(../images/delete_tag.png) no-repeat left center;
+  height:100%;
+  width:10px;
+  position:absolute;
+  top:0px;
+  right:0px;
+  padding-right: 2px;
+}
+
 .seperator {
   display: inline;
   font-size: 120px;
