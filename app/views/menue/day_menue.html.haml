@@ -1,9 +1,9 @@
 - if @customize
   = link_to "Fertig", day_menue_path(date: @date), class: "nav_button", style: 'float: right;'
 
-  %h4 Versteckte Kategorien
+  %h4= t :not_visible_categories
   #not_visible_categories
-    = render partial: 'menue/not_visible_categories', locals: {categories: @not_visible_categories}
+    = render partial: 'menue/not_visible_categories', locals: {categories: @not_visible_categories, date: @date}
 
 - elsif current_user
   = link_to "Anpassen", day_menue_path(date: @date, customize: true), class: "nav_button", style: 'float: right;'
@@ -21,61 +21,13 @@
     %div{:style => "clear:both"}
 
   #sortdishes
-    - if !@dishes.blank?
-      - for dish in @dishes
-        .dish_container{id: "sortdishes_#{dish.menue_category.id}", style: "background-color: #{bg_color_for_mensa_id(dish.mensa_id)}"}
-          - if @customize
-            .drag_handle= image_tag 'drag_handle.png'
-            .remove_category{id: "#{dish.menue_category.id}"}= image_tag('remove.png')
-          = dish.mensa.name
-          %br/
-          %b= t dish.menue_category.name
-          %br/
-          %br/
-          %div{id: "dish_cell_#{dish.id}"}
-            - if !dish.not_real_dish?
-              = render partial: 'dishes/dish', locals:{dish: dish}
-            - else
-              = render partial: 'dishes/not_real_dish', locals:{dish: dish}
+    - for dish in @dishes
+      = render partial: 'menue/dish_container', locals: {dish: dish, customize: @customize}
   %div{style: 'clear:both'}
 
 - if @customize
   :javascript
-    function makeSortable() {
-      Sortable.create('sortdishes', {
-        tag: 'div',
-        overlap: 'horizontal',
-        constraint: '',
-        handle: 'drag_handle',
-        scroll: window,
-        onUpdate: function() {
-          var seq = Sortable.serialize("sortdishes");
-
-          new Ajax.Request('#{escape_javascript sort_categories_url}', {
-            method: "post",
-            parameters: { data: seq }
-          });
-        }
-      });
-    }
-
-    var elements = $$('.remove_category');
-    for (var i = 0; i < elements.length; i++) {
-      (function(el) {
-        Event.observe(el, 'click', function() {
-          new Ajax.Request('#{escape_javascript remove_category_url}', {
-            method: "post",
-            parameters: { id: el.id },
-            onSuccess: function() {
-              el.getOffsetParent().remove();
-            }
-          });
-        });
-      })(elements[i]);
-    }
-
-    makeSortable();
-
+    makeSortable('sortdishes', '#{escape_javascript sort_categories_url}');
 
 :javascript
   handleTooLongDishDescriptions();

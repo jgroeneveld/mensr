@@ -1,20 +1,8 @@
-- @not_visible_categories.each do |c|
-  .add_category{id: c.id}
-    = image_tag('add.png')
-    = "#{t c.name} (#{c.mensa.name})"
+-# locals: categories, date
 
-:javascript
-  var elements = $$('.add_category');
-  for (var i = 0; i < elements.length; i++) {
-    (function(el) {
-      Event.observe(el, 'click', function() {
-        new Ajax.Request('#{escape_javascript add_category_url}', {
-          method: "post",
-          parameters: { id: el.id },
-          onSuccess: function() {
-            el.remove();
-          }
-        });
-      });
-    })(elements[i]);
-  }
+- if categories.empty?
+  = t :no_categories_hidden
+- else
+  - categories.each do |c|
+    .add_category{id: "add_category_#{c.id}"}
+      = link_to image_tag('add.png') + "#{t c.name} (#{c.mensa.name})", {controller: 'layout_options', action: 'add_category', id:c.id, date: date}, {remote: true}

@@ -1,5 +1,8 @@
 de:
 
+  not_visible_categories: Versteckte Kategorien
+  no_categories_hidden: Keine versteckt
+
   hello: "Hallo"
   back: "Zurück"
   are_you_sure: "Sind sie sicher?"

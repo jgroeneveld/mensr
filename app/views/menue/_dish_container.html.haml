@@ -1,0 +1,17 @@
+-# locals: dish, customize
+
+.dish_container{id: "sortdishes_#{dish.menue_category.id}", style: "background-color: #{bg_color_for_mensa_id(dish.mensa_id)}"}
+  - if customize
+    .drag_handle= image_tag 'drag_handle.png'
+    .remove_category{id: "#{dish.menue_category.id}"}
+      = link_to image_tag('remove.png'), {controller: 'layout_options', action: 'remove_category', id:dish.menue_category.id, date: dish.serve_date}, {remote: true}
+  = dish.mensa.name
+  %br/
+  %b= t dish.menue_category.name
+  %br/
+  %br/
+  %div{id: "dish_cell_#{dish.id}"}
+    - if !dish.not_real_dish?
+      = render partial: 'dishes/dish', locals:{dish: dish}
+    - else
+      = render partial: 'dishes/not_real_dish', locals:{dish: dish}

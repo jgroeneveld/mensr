@@ -1,3 +1,11 @@
 $('not_visible_categories').update('<%= escape_javascript(
-  render partial: 'menue/not_visible_categories', locals: {categories: @not_visible_categories}
+  render partial: 'menue/not_visible_categories', locals: {categories: @not_visible_categories, date: @date}
 )%>');
+
+$('add_category_<%= @category_id %>').highlight();
+
+$('sortdishes_<%= @category_id %>').dropOut({duration: 0.5});
+
+setTimeout(function() {
+  $('sortdishes_<%= @category_id %>').remove();
+}, 500);

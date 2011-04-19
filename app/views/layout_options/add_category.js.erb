@@ -1,0 +1,14 @@
+$('not_visible_categories').update('<%= escape_javascript(
+  render partial: 'menue/not_visible_categories', locals: {categories: @not_visible_categories, date: @date}
+)%>');
+
+
+
+$('sortdishes').insert({top: '<%= escape_javascript(
+  render partial: 'menue/dish_container', locals: {dish: @dish, customize: true}
+) %>'});
+
+$('sortdishes_<%= @category_id %>').hide();
+$('sortdishes_<%= @category_id %>').appear();
+
+makeSortable('sortdishes', '<%= escape_javascript sort_categories_url %>');
