@@ -24,6 +24,7 @@ group :development do
   gem 'ruby-debug19'
   gem 'sqlite3'
   gem 'ruby_parser'
+  gem 'mysql2', '>= 0.2.7'
 end
 
 group :test do
@@ -33,5 +34,5 @@ group :test do
 end
 
 group :production do
-  gem 'mysql2'
+  gem 'mysql2', '>= 0.2.7'
 end

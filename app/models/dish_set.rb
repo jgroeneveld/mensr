@@ -31,7 +31,7 @@ class DishSet < ActiveRecord::Base
   end
 
   def match_percentage dish
-    matches = dish.description.scan(/#{self.common_key_words}/).count
+    matches = dish.description_to_match.scan(/#{self.common_key_words}/).count
 
     matches.to_f/self.common_key_words_array.count.to_f
   end

@@ -61,7 +61,7 @@ GEM
     mongrel (1.2.0.pre2)
       daemons (~> 1.0.10)
       gem_plugin (~> 0.2.3)
-    mysql2 (0.2.6)
+    mysql2 (0.2.7)
     nokogiri (1.4.4)
     paperclip (2.3.8)
       activerecord
@@ -139,7 +139,7 @@ DEPENDENCIES
   hirb
   hpricot
   mongrel
-  mysql2
+  mysql2 (>= 0.2.7)
   paperclip
   rack-ssl-enforcer
   rails (= 3.0.4)

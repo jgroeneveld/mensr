@@ -1,3 +1,5 @@
+# coding: utf-8
+
 # == Schema Information
 # Schema version: 20110305173938
 #
@@ -95,8 +97,13 @@ class Dish < ActiveRecord::Base
     self.reload
   end
 
+  def description_to_match
+    self.description.gsub('ä', 'ae').gsub('ü', 'ue').gsub('ö', 'oe').gsub('ß', 'ss')
+  end
+
   def key_words
-    self.description.scan(/\b[A-Z]\w+/)
+    # umlaute ersetzen weil regex + umlaut kaputt scheint
+    self.description_to_match.scan(/\b[A-Z]\w+/)
   end
 
   def assign_best_set!
